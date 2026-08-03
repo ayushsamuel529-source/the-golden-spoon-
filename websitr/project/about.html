@@ -1,0 +1,312 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#000;
+    overflow-x:hidden;
+}
+
+/* TOP BUTTONS */
+
+.top-buttons{
+    position:fixed;
+    top:20px;
+    right:20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    z-index:3000;
+}
+
+.top-buttons div{
+    padding:10px 22px;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+/* Reservation */
+
+.reservation{
+    border:1px solid #C9A14A;
+    background:transparent;
+    color:#fff;
+}
+
+.reservation:hover{
+    background:#C9A14A;
+    color:#000;
+}
+
+/* Takeout */
+
+.takeout{
+    background:#C9A14A;
+    border:1px solid #C9A14A;
+    color:#000;
+}
+
+.takeout:hover{
+    background:#A67C2E;
+    color:#000;
+}
+/* MENU */
+
+.menu-icon{
+position:fixed;
+left:20px;
+top:20px;
+font-size:32px;
+color:#fff;
+cursor:pointer;
+z-index:3000;
+transition:.3s;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+left:-260px;
+top:0;
+width:260px;
+height:100%;
+background:#111;
+padding-top:60px;
+transition:.4s;
+z-index:4000;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.sidebar a{
+display:block;
+padding:15px 20px;
+color:#fff;
+text-decoration:none;
+transition:.3s;
+}
+
+.sidebar a:hover{
+background:#333;
+}
+
+.close-btn{
+position:absolute;
+right:20px;
+top:15px;
+font-size:26px;
+color:#fff;
+cursor:pointer;
+}
+/* ABOUT SECTION */
+
+.about-section{
+width:90%;
+max-width:1300px;
+margin:130px auto 60px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:70px;
+}
+
+.about-image{
+flex:1;
+opacity:0;
+animation:imageReveal .9s ease forwards;
+}
+
+.about-image img{
+width:100%;
+max-width:380px;
+height:500px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.about-text{
+flex:2;
+}
+
+.about-text h1,
+.typing-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 48px;
+  color: #D4AF37;
+  margin-bottom: 25px;
+
+  display: inline-block;          /* ← yeh line bahut zaroori hai */
+  overflow: hidden;
+  border-right: 3px solid #D4AF37;
+  white-space: nowrap;
+  width: 0;
+  animation: handwriting 4s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             penBlink 0.9s ease-in-out infinite;
+}
+
+/* Handwriting animation */
+@keyframes handwriting {
+  0% {
+    width: 0;
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Soft pen blink */
+@keyframes penBlink {
+  0%, 100% {
+    border-color: #D4AF37;
+  }
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes imageReveal{
+from{
+opacity:0;
+transform:translateX(-120px);
+filter:blur(12px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+filter:blur(0);
+}
+}
+
+@keyframes paraAppear{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.about-text p {
+  color: #D4AF37;
+  font-size: 19px;              /* Letters thoda bada */
+  opacity: 0;
+  transform: translateY(25px);
+  animation: paraReveal 1s ease forwards;
+  margin-bottom: 18px;
+}
+
+.about-text p:nth-of-type(1) {
+  animation-delay: 0.4s;
+}
+
+.about-text p:nth-of-type(2) {
+  animation-delay: 0.9s;
+}
+
+.about-text p:nth-of-type(3) {
+  animation-delay: 1.4s;
+}
+
+.about-text p:nth-of-type(4) {
+  animation-delay: 1.9s;
+}
+
+@keyframes paraReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+<div class="top-buttons">
+    <div class="reservation">Reservation</div>
+    <div class="takeout">Takeout</div>
+</div>
+
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+<div class="sidebar" id="sidebar">
+
+<div class="close-btn" onclick="toggleMenu()">✕</div>
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="menu.html">Menu</a>
+<a href="#">Reservation</a>
+<a href="#">Address</a>
+<a href="#">Takeout</a>
+
+</div>
+<div class="about-section">
+
+    <div class="about-image">
+        <img src="image/about.jpg" alt="The Golden Spoon">
+    </div>
+
+    <div class="about-text">
+
+        <h1>About The Golden Spoon</h1>
+
+        <p>
+            <span class="highlight">The Golden Spoon</span> is more than a restaurant.
+            It is a place where delicious American food meets a warm and elegant atmosphere.
+            The word <span class="highlight">Golden</span> stands for quality, success, and memorable moments,
+            while the <span class="highlight">Spoon</span> represents food, care, and hospitality.
+            Together, they create a name that reflects luxury with comfort.
+        </p>
+
+        <p>
+            Every corner of The Golden Spoon is designed to make guests feel relaxed and welcome.
+            From carefully prepared dishes to beautiful interiors,
+            every detail is created to give families, friends, and couples
+            an unforgettable dining experience filled with joy and connection.
+        </p>
+
+        <p>
+            Our vision is to become a destination where people celebrate special occasions,
+            create lifelong memories, and enjoy premium food with outstanding service.
+            Every visit is meant to leave a smile,
+            making The Golden Spoon a place guests always look forward to returning to.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Close sidebar when clicking outside */
+
+document.addEventListener("click",function(e){
+
+const sidebar=document.getElementById("sidebar");
+
+const menu=document.querySelector(".menu-icon");
+
+if(!sidebar.contains(e.target) && !menu.contains(e.target)){
+
+sidebar.classList.remove("active");
+
+}
+
+});

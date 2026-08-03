@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE GOLDEN SPOON
+</title>
+<style>
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:80px;
+}
+  html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
+}
+
+.slider{
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+
+.slide{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* TOP BUTTONS */
+.top-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 2000;
+}
+/* TAKEOUT - Sirf Golden Border */
+.takeout {
+  padding: 8px 18px;
+  border: 1px solid #C9A14A;
+  color: #C9A14A;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.takeout:hover {
+  background: #C9A14A;
+  color: #000;
+}
+
+/* RESERVATION - Golden Box */
+.reservation {
+  padding: 8px 18px;
+  border: 1px solid #C9A14A;
+  color: #000;
+  background: #C9A14A;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reservation:hover {
+  background: #A67C2E;
+  border-color: #A67C2E;
+  color: #000;
+}
+.reservation:hover { background: #A67C2E; }
+
+.takeout:hover {
+  background: #C9A14A;
+  color: #000;
+}
+
+/* MENU ICON (DYNAMIC COLOR) */
+.menu-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 32px;
+  cursor: pointer;
+  color: white;
+  z-index: 2000;
+  transition: 0.3s;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  color: white;
+  transition: 0.4s;
+  z-index: 1500;
+  padding-top: 60px;
+}
+
+.sidebar.active { left: 0; }
+
+/* ❌ CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+}
+.sidebar a:hover { background: #333; }
+
+/* SLIDER */
+.slider {
+  position: relative;
+  height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 1s;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slide.active { opacity: 1; }
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 30px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  cursor: pointer;
+  background: transparent;
+  z-index: 1000;
+}
+.left { left: 20px; }
+.right { right: 20px; }
+
+/* ANIMATIONS */
+.fade { animation: fade 1s; }
+@keyframes fade { from{opacity:0;} to{opacity:1;} }
+
+.slide-left { animation: slideLeft 1s; }
+@keyframes slideLeft { from{transform:translateX(100%);} to{transform:translateX(0);} }
+
+.slide-right { animation: slideRight 1s; }
+@keyframes slideRight { from{transform:translateX(-100%);} to{transform:translateX(0);} }
+
+.zoom { animation: zoom 1s; }
+@keyframes zoom { from{transform:scale(1.2);} to{transform:scale(1);} }
+
+.rotate { animation: rotate 1s; }
+@keyframes rotate { from{transform:rotate(-8deg);} to{transform:rotate(0);} }
+
+</style>
+<link rel="stylesheet" href="about.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="khanna.css">
+</head>
+
+<body>
+
+<!-- TOP BUTTONS -->
+<div class="top-buttons">
+  <div class="takeout">Takeout</div>
+  <div class="reservation">Reservation</div>
+</div>
+
+<!-- MENU -->
+<div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="close-btn" onclick="toggleMenu()">✕</div>
+
+  <a href="index.html">Home</a>
+  <a href="#about">about</a>
+  <a href="#menu">Menu</a>
+  <a href="#reservation">Reservation</a>
+  <a href="#address">Address</a>
+  <a href="#takeout">Takeout</a>
+</div>
+
+<!-- SLIDER -->
+<div class="slider">
+
+  <div class="slide active"><img src="image/image1.jpg"></div>
+  <div class="slide"><img src="image/image2.jpg"></div>
+  <div class="slide"><img src="image/image3.jpg"></div>
+  <div class="slide"><img src="image/image4.jpg"></div>
+  <div class="arrow left" onclick="prevSlide()">❮</div>
+  <div class="arrow right" onclick="nextSlide()">❯</div>
+
+</div>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+let animations = ['fade','slide-left','slide-right','zoom','rotate'];
+
+/* 🔥 MENU ICON COLOR BASED ON IMAGE */
+let menuIcon = document.getElementById("menuIcon");
+
+function changeMenuColor(i){
+  if(i % 2 === 0){
+    menuIcon.style.color = "white";
+  } else {
+    menuIcon.style.color = "#C9A14A"; // gold
+  }
+}
+
+function showSlide(i){
+  slides.forEach(s=>{
+    s.classList.remove('active');
+    s.classList.remove(...animations);
+  });
+
+  slides[i].classList.add('active');
+  slides[i].classList.add(animations[i % animations.length]);
+
+  changeMenuColor(i); // 🔥 color change
+}
+
+function nextSlide(){
+  index = (index+1)%slides.length;
+  showSlide(index);
+}
+
+function prevSlide(){
+  index = (index-1+slides.length)%slides.length;
+  showSlide(index);
+}
+
+setInterval(nextSlide,5000);
+
+function toggleMenu(){
+  document.getElementById('sidebar').classList.toggle('active');
+}
+</script>
+<div id="about" class="about-section">
+
+    <div class="about-image">
+        <img src="image/about.jpg" alt="The Golden Spoon">
+    </div>
+
+    <div class="about-text">
+
+        <h1>About The Golden Spoon</h1>
+<p>
+    <span class="highlight">The Golden Spoon</span> is more than just a restaurant—it is a symbol of luxury, warmth, and unforgettable dining. The word <span class="highlight">Golden</span> represents excellence, success, and cherished moments, while the <span class="highlight">Spoon</span> reflects care, hospitality, and the passion behind every dish we serve.
+</p>
+
+<p>
+    Our signature dish, the <span class="highlight">Golden Truffle Steak Platter</span>, perfectly represents our name. Prepared with premium grilled steak, creamy truffle sauce, golden roasted potatoes, and fresh vegetables, it combines rich American flavors with an elegant presentation that guests remember long after their visit.
+</p>
+
+<p>
+    At The Golden Spoon, every meal is crafted to create lasting memories. Whether you are celebrating with family, enjoying a romantic dinner, or gathering with friends, our goal is to offer exceptional food, outstanding service, and an atmosphere that makes every visit feel truly golden.
+</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+menu section 
+<!-- ========================================= -->
+<!-- MENU SECTION START -->
+<!-- ========================================= -->
+
+<section id="menu" class="menu-section">
+
+    <!-- SECTION HEADING -->
+
+    <div class="menu-heading">
+
+        <h1>Our Menu</h1>
+
+        <p>
+            Discover handcrafted American classics prepared with
+            premium ingredients and unforgettable flavors.
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORY BAR -->
+
+    <div class="menu-category">
+
+        <button class="category-btn active"
+                onclick="changeCategory('breakfast',0,this)">
+            Breakfast
+        </button>
+
+        <button class="category-btn"
+                onclick="changeCategory('lunch',1,this)">
+            Lunch
+        </button>
+
+        <button class="category-btn"
+                onclick="changeCategory('dinner',2,this)">
+            Dinner
+        </button>
+
+        <button class="category-btn"
+                onclick="changeCategory('snacks',3,this)">
+            Snacks
+        </button>
+
+        <button class="category-btn"
+                onclick="changeCategory('sweets',4,this)">
+            Sweets
+        </button>
+
+        <button class="category-btn"
+                onclick="changeCategory('drinks',5,this)">
+            Drinks
+        </button>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- TOP BANNER -->
+    <!-- ========================= -->
+
+    <div class="menu-banner">
+
+        <!-- LEFT ARROW -->
+
+        <button class="banner-arrow left"
+                onclick="previousBanner()">
+
+            &#10094;
+
+        </button>
+
+
+
+        <!-- BANNER IMAGE -->
+
+        <div class="banner-image">
+
+            <img
+    id="bannerImage"
+    src="food/breakfast-banner1.jpg"
+    alt="Menu Banner">
+            <div class="banner-overlay">
+
+                <span id="bannerSubTitle">
+
+                    The Golden Spoon
+
+                </span>
+
+                <h2 id="bannerTitle">
+
+                    Breakfast Menu
+
+                </h2>
+
+                <p id="bannerDescription">
+
+                    Freshly prepared breakfast made with premium
+                    ingredients to start your day perfectly.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT ARROW -->
+
+        <button class="banner-arrow right"
+                onclick="nextBanner()">
+
+            &#10095;
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- MENU ITEMS START -->
+    <!-- ========================= -->
+
+    <div class="menu-wrapper">
+              <!-- ========================= -->
+        <!-- BREAKFAST -->
+        <!-- ========================= -->
+
+        <div class="menu-content active" id="breakfast">
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                   <img src="menu/breakfast1.jpeg" alt="Breakfast">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Classic American Breakfast</h3>
+
+                    <p>
+                        Eggs, grilled sausage, hash browns,
+                        butter toast and fresh salad.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹499
+
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/breakfast2.jpeg" alt="Breakfast">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Cheese Omelette</h3>
+
+                    <p>
+                        Three egg omelette filled with cheddar cheese,
+                        served with toasted bread.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹389
+
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/breakfast3.jpeg" alt="Breakfast">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Pancake Delight</h3>
+
+                    <p>
+                        Soft fluffy pancakes served with maple syrup
+                        and fresh butter.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹429
+
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/breakfast4.jpeg" alt="Breakfast">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>French Toast</h3>
+
+                    <p>
+                        Golden toasted bread topped with honey,
+                        berries and whipped cream.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹459
+
+                </div>
+
+            </div>
+
+        </div>
+                <!-- ========================= -->
+        <!-- LUNCH -->
+        <!-- ========================= -->
+
+        <div class="menu-content" id="lunch">
+
+            <!-- CHEF'S SPECIAL -->
+
+            <div class="menu-item chef-special">
+
+                <div class="food-image">
+
+                    <img src="menu/golden-steak.jpg" alt="Golden Truffle Steak">
+                </div>
+
+                <div class="food-details">
+
+                    <span class="special-badge">
+
+                        ★ CHEF'S SPECIAL
+
+                    </span>
+
+                    <h3>Golden Truffle Steak Platter</h3>
+
+                    <p>
+
+                        Premium grilled steak served with creamy truffle sauce,
+                        golden roasted potatoes,
+                        fresh vegetables,
+                        garlic butter,
+                        and our signature chef seasoning.
+
+                    </p>
+
+                </div>
+
+                <div class="food-price premium-price">
+
+                    ₹1899
+
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+
+                   <img src="menu/lunch1.jpeg" alt="Lunch">
+
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Grilled Chicken Plate</h3>
+
+                    <p>
+
+                        Herb grilled chicken served with butter rice,
+                        vegetables and house sauce.
+
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹799
+
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+
+                    <img src="menu/lunch2.jpg" alt="Lunch">
+
+                </div>
+
+                <div class="food-details">
+
+                    <h3> Classic Burger</h3>
+
+                    <p>
+
+                       Juicy grilled burger served with cheddar cheese,
+    fresh lettuce, tomato,
+    crispy fries and our signature house sauce.
+
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹649
+
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+
+                 <img src="menu/lunch3.jpeg" alt="Lunch">
+
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Chicken Alfredo Pasta</h3>
+
+                    <p>
+
+                        Creamy Alfredo pasta with grilled chicken
+                        and parmesan cheese.
+
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+
+                    ₹699
+
+                </div>
+
+            </div>
+
+        </div>
+                <!-- ========================= -->
+        <!-- DINNER -->
+        <!-- ========================= -->
+
+        <div class="menu-content" id="dinner">
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/dinner1.jpeg" alt="Dinner">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Ribeye Steak</h3>
+
+                    <p>
+                        Premium ribeye steak served with mashed potatoes,
+                        grilled vegetables and pepper sauce.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹1599
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/dinner2.jpeg" alt="Dinner">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Grilled Salmon</h3>
+
+                    <p>
+                        Fresh Atlantic salmon with lemon butter,
+                        seasonal vegetables and herb rice.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹1299
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/dinner3.jpeg" alt="Dinner">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Roasted Chicken Supreme</h3>
+
+                    <p>
+                        Herb roasted chicken served with creamy mashed
+                        potatoes and garlic butter vegetables.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹899
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================= -->
+        <!-- SNACKS -->
+        <!-- ========================= -->
+
+        <div class="menu-content" id="snacks">
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/snack1.jpg" alt="Snacks">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Loaded French Fries</h3>
+
+                    <p>
+                        Crispy fries topped with cheese,
+                        herbs and our signature seasoning.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹299
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/snack2.jpg" alt="Snacks">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Chicken Wings</h3>
+
+                    <p>
+                        Crispy golden chicken wings served
+                        with spicy BBQ dip.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹499
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/snack3.jpg" alt="Snacks">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Onion Rings</h3>
+
+                    <p>
+                        Crunchy onion rings served with
+                        creamy garlic dip.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹249
+                </div>
+
+            </div>
+
+        </div>
+                <!-- ========================= -->
+        <!-- SWEETS -->
+        <!-- ========================= -->
+
+        <div class="menu-content" id="sweets">
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/sweet1.jpg" alt="Sweets">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Chocolate Lava Cake</h3>
+
+                    <p>
+                        Warm chocolate cake with a rich molten
+                        chocolate center served with vanilla ice cream.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹399
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/sweet2.jpg" alt="Sweets">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>New York Cheesecake</h3>
+
+                    <p>
+                        Creamy cheesecake topped with fresh berries
+                        and strawberry sauce.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹449
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/sweet3.jpg" alt="Sweets">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Chocolate Brownie</h3>
+
+                    <p>
+                        Freshly baked brownie served with chocolate syrup.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹349
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================= -->
+        <!-- DRINKS -->
+        <!-- ========================= -->
+
+        <div class="menu-content" id="drinks">
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/drink1.jpg" alt="Drinks">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Fresh Orange Juice</h3>
+
+                    <p>
+                        Freshly squeezed oranges served chilled.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹199
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/drink2.jpg" alt="Drinks">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Classic Mojito</h3>
+
+                    <p>
+                        Refreshing mint, lime and soda mocktail.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹249
+                </div>
+
+            </div>
+
+
+
+            <div class="menu-item">
+
+                <div class="food-image">
+                    <img src="menu/drink3.jpg" alt="Drinks">
+                </div>
+
+                <div class="food-details">
+
+                    <h3>Cold Coffee</h3>
+
+                    <p>
+                        Premium cold coffee blended with milk
+                        and vanilla ice cream.
+                    </p>
+
+                </div>
+
+                <div class="food-price">
+                    ₹299
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</section>
+
+<script src="lunch.js"></script>
+<script src="about.js"></script>
+</body>
+<!-- ========================= -->
+<!-- MENU SECTION END -->
+<!-- ========================= -->
