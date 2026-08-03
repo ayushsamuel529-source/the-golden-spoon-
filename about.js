@@ -25,17 +25,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 void heading.offsetWidth;
 
                 // Start animation again
-                image.style.animation = "imageReveal 1.5s ease forwards";
+                image.style.animation = "imageReveal 1s ease forwards";
 
                 heading.style.animation =
-"handwriting 4s cubic-bezier(0.4,0,0.2,1) forwards";
+"handwriting 2.5s cubic-bezier(0.4,0,0.2,1) forwards";
 
                 paragraphs.forEach(function(p, index) {
 
                     void p.offsetWidth;
 
                     p.style.animation = "paraReveal 1s ease forwards";
-                    p.style.animationDelay = (0.4 + index * 0.5) + "s";
+                    p.style.animationDelay = (0.2 + index * 0.3) + "s";
 
                 });
 

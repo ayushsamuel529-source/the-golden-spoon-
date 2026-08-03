@@ -121,6 +121,7 @@ gap:70px;
 .about-image{
     width:550px;
     height:500px;
+    max-width:100%;
     overflow:hidden;
 
     opacity:0;
@@ -203,6 +204,93 @@ transform:translateY(25px);
 to{
 opacity:1;
 transform:translateY(0);
+}
+
+}
+/* =========================
+   MOBILE ABOUT
+========================= */
+
+@media (max-width:768px){
+
+.about-section{
+    flex-direction:column;
+    align-items:center;
+    gap:35px;
+    width:95%;
+    margin:100px auto 40px;
+}
+
+}
+@media (max-width:768px){
+
+.about-image{
+
+    width:100%;
+    max-width:340px;
+    height:300px;
+
+}
+
+}
+@media (max-width:768px){
+
+.about-text{
+
+    width:100%;
+    text-align:center;
+
+}
+
+}
+@media (max-width:768px){
+
+.about-text h1,
+.typing-text{
+
+    font-size:34px;
+    white-space:normal;
+
+}
+
+}
+@media (max-width:768px){
+
+.about-text p{
+
+    font-size:16px;
+    line-height:1.8;
+
+}
+
+}
+@media (max-width:768px){
+
+.top-buttons{
+
+    top:15px;
+    right:15px;
+    gap:8px;
+
+}
+
+.takeout,
+.reservation{
+
+    padding:8px 12px;
+    font-size:14px;
+
+}
+
+}
+@media (max-width:768px){
+
+.menu-icon{
+
+    left:10px;
+    top:10px;
+    font-size:28px;
+
 }
 
 }

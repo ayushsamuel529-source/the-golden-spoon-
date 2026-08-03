@@ -136,11 +136,7 @@ body {
 }
 .sidebar a:hover { background: #333; }
 
-/* SLIDER */
-.slider {
-  position: relative;
-  height: 100vh;
-}
+
 
 .slide {
   position: absolute;
@@ -187,7 +183,61 @@ body {
 
 .rotate { animation: rotate 1s; }
 @keyframes rotate { from{transform:rotate(-8deg);} to{transform:rotate(0);} }
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
 
+@media (max-width:768px){
+
+    /* Top Buttons */
+   
+    /* Menu Icon */
+    .menu-icon{
+        top:15px;
+        left:15px;
+        font-size:28px;
+    }
+
+    /* Slider */
+    .slider{
+        height:100vh;
+    }
+
+    .slide img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    /* Arrows */
+    .arrow{
+        font-size:22px;
+        padding:8px 12px;
+    }
+
+    .left{
+        left:10px;
+    }
+
+    .right{
+        right:10px;}
+        /* TOP BUTTONS MOBILE */
+
+.top-buttons{
+    top:10px;
+    right:10px;
+    gap:8px;
+}
+
+.takeout,
+.reservation{
+    padding:8px 12px;
+    font-size:14px;
+}
+    }
+
+}
 </style>
 <link rel="stylesheet" href="about.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
