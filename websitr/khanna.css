@@ -1,0 +1,1187 @@
+/* =========================================
+   MENU SECTION
+========================================= */
+
+.menu-section{
+
+    width:90%;
+    max-width:1400px;
+    margin:120px auto;
+
+}
+
+/* =========================================
+   MENU HEADING
+========================================= */
+
+.menu-heading{
+
+    text-align:center;
+    margin-bottom:55px;
+
+}
+
+.menu-heading h1{
+
+    font-size:58px;
+    color:#D4AF37;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    margin-bottom:15px;
+    letter-spacing:1px;
+
+}
+
+.menu-heading p{
+
+    width:700px;
+    max-width:90%;
+    margin:auto;
+    color:#d2d2d2;
+    font-size:18px;
+    line-height:1.8;
+
+}
+
+
+/* =========================================
+   CATEGORY BAR
+========================================= */
+
+.menu-category{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+
+    margin-bottom:45px;
+
+}
+
+
+.category-btn{
+
+    padding:12px 28px;
+
+    background:transparent;
+
+    border:1px solid #D4AF37;
+
+    color:#D4AF37;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    border-radius:50px;
+
+}
+
+
+.category-btn:hover{
+
+    background:#D4AF37;
+
+    color:#000;
+
+}
+
+
+.category-btn.active{
+
+    background:#D4AF37;
+
+    color:#000;
+
+}
+
+
+/* =========================================
+   TOP BANNER
+========================================= */
+
+.menu-banner{
+
+    position:relative;
+
+    width:100%;
+
+    height:520px;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    margin-bottom:70px;
+
+}
+
+
+.banner-image{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+.banner-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:opacity .6s ease,
+               transform .6s ease,
+               filter .6s ease;
+
+}
+
+/* Banner Animation */
+
+.banner-image img.show{
+
+    animation:bannerAnimation .8s ease;
+
+}
+
+@keyframes bannerAnimation{
+
+    0%{
+        opacity:0;
+        transform:scale(1.08);
+        filter:blur(6px);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0);
+    }
+
+}
+
+
+/* DARK OVERLAY */
+
+.banner-overlay{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(rgba(0,0,0,.35),
+                               rgba(0,0,0,.70));
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+
+.banner-overlay span{
+
+    color:#D4AF37;
+
+    font-size:18px;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+}
+
+
+.banner-overlay h2{
+
+    color:#fff;
+
+    font-size:62px;
+
+    margin-bottom:18px;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+
+.banner-overlay p{
+
+    width:700px;
+
+    max-width:90%;
+
+    color:#fff;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+/* =========================================
+   BANNER ARROWS
+========================================= */
+
+.banner-arrow{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:60px;
+
+    height:60px;
+
+    border:2px solid #fff;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:28px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    z-index:100;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+.banner-arrow.left{
+
+    left:30px;
+
+}
+
+
+.banner-arrow.right{
+
+    right:30px;
+
+}
+
+
+.banner-arrow:hover{
+
+    border-color:#D4AF37;
+
+    color:#D4AF37;
+
+    transform:translateY(-50%) scale(1.08);
+
+}
+
+
+/* =========================================
+   BANNER FADE ANIMATION
+========================================= */
+
+.banner-image img{
+
+    animation:bannerFade .8s ease;
+
+}
+
+
+@keyframes bannerFade{
+
+    from{
+
+        opacity:.4;
+
+        transform:scale(1.05);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   MENU WRAPPER
+========================================= */
+
+.menu-wrapper{
+
+    width:100%;
+
+}
+
+
+/* Hide all categories */
+
+.menu-content{
+
+    display:none;
+
+}
+
+
+/* Active category */
+
+.menu-content.active{
+
+    display:block;
+
+    animation:menuFade .5s ease;
+
+}
+
+
+/* Menu Fade */
+
+@keyframes menuFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* =========================================
+   MENU ITEM
+========================================= */
+
+.menu-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    background:#111;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:22px;
+
+    transition:.35s;
+
+}
+
+
+.menu-item:hover{
+
+    border-color:#D4AF37;
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 35px rgba(212,175,55,.18);
+
+}
+
+
+/* =========================================
+   FOOD IMAGE
+========================================= */
+
+.food-image{
+
+    flex:0 0 180px;
+
+    width:180px;
+
+    height:180px;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+}
+
+
+.food-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+
+.menu-item:hover .food-image img{
+
+    transform:scale(1.08);
+
+}
+
+
+/* =========================================
+   FOOD DETAILS
+========================================= */
+
+.food-details{
+
+    flex:1;
+
+}
+
+
+.food-details h3{
+
+    color:#D4AF37;
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+
+.food-details p{
+
+    color:#d0d0d0;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+}
+
+
+/* =========================================
+   PRICE
+========================================= */
+
+.food-price{
+
+    min-width:120px;
+
+    text-align:right;
+
+    color:#D4AF37;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   CHEF SPECIAL
+========================================= */
+
+.special-badge{
+
+    display:inline-block;
+
+    margin-bottom:10px;
+
+    padding:6px 14px;
+
+    background:#D4AF37;
+
+    color:#000;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+
+.premium-price{
+
+    color:#FFD700;
+
+    font-size:40px;
+
+}
+
+
+.chef-special{
+
+    border:2px solid #D4AF37;
+
+    background:linear-gradient(90deg,#111,#181818);
+
+}
+/* =========================================
+   DIVIDER
+========================================= */
+
+.menu-item::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:22px;
+
+    right:22px;
+
+    bottom:-11px;
+
+    height:1px;
+
+    background:rgba(212,175,55,.18);
+
+}
+
+.menu-item:last-child::after{
+
+    display:none;
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width:992px){
+
+.menu-banner{
+
+    height:420px;
+
+}
+
+.banner-overlay h2{
+
+    font-size:46px;
+
+}
+
+.banner-overlay p{
+
+    font-size:16px;
+
+}
+
+.food-image{
+
+    flex:0 0 150px;
+
+    width:150px;
+
+    height:150px;
+
+}
+
+.food-details h3{
+
+    font-size:24px;
+
+}
+
+.food-price{
+
+    font-size:28px;
+
+}
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+.menu-heading h1{
+
+    font-size:40px;
+
+}
+
+.menu-heading p{
+
+    font-size:15px;
+
+}
+
+.menu-banner{
+
+    height:300px;
+
+}
+
+.banner-overlay h2{
+
+    font-size:32px;
+
+}
+
+.banner-overlay span{
+
+    font-size:15px;
+
+}
+
+.banner-overlay p{
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+.banner-arrow{
+
+    width:45px;
+
+    height:45px;
+
+    font-size:20px;
+
+}
+
+.banner-arrow.left{
+
+    left:10px;
+
+}
+
+.banner-arrow.right{
+
+    right:10px;
+
+}
+
+.menu-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    text-align:left;
+
+}
+
+.food-image{
+
+    width:100%;
+
+    height:230px;
+
+    flex:none;
+
+}
+
+.food-price{
+
+    width:100%;
+
+    text-align:left;
+
+    margin-top:10px;
+
+    font-size:30px;
+
+}
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media(max-width:480px){
+
+.menu-heading h1{
+
+    font-size:32px;
+
+}
+
+.category-btn{
+
+    width:100%;
+
+}
+
+.menu-category{
+
+    gap:10px;
+
+}
+
+.food-image{
+
+    height:190px;
+
+}
+
+.food-details h3{
+
+    font-size:22px;
+
+}
+
+.food-details p{
+
+    font-size:14px;
+
+}
+
+.food-price{
+
+    font-size:26px;
+
+}
+
+}
+/* =========================================
+   SMOOTH TRANSITIONS
+========================================= */
+
+*{
+
+    scroll-behavior:smooth;
+
+}
+
+.menu-banner,
+.banner-image,
+.banner-image img,
+.menu-item,
+.food-image img,
+.category-btn{
+
+    transition:all .4s ease;
+
+}
+
+
+/* =========================================
+   CATEGORY ANIMATION
+========================================= */
+
+.category-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.category-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:0;
+
+    width:0;
+
+    height:2px;
+
+    background:#D4AF37;
+
+    transition:.35s;
+
+    transform:translateX(-50%);
+
+}
+
+.category-btn:hover::after,
+.category-btn.active::after{
+
+    width:70%;
+
+}
+
+
+/* =========================================
+   MENU ITEM APPEAR
+========================================= */
+
+@keyframes itemAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.menu-content.active .menu-item{
+
+    animation:itemAppear .7s ease forwards;
+
+}
+
+.menu-content.active .menu-item:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+.menu-content.active .menu-item:nth-child(3){
+
+    animation-delay:.30s;
+
+}
+
+.menu-content.active .menu-item:nth-child(4){
+
+    animation-delay:.45s;
+
+}
+
+
+/* =========================================
+   IMAGE ZOOM
+========================================= */
+
+.banner-image{
+
+    overflow:hidden;
+
+}
+
+.banner-image img{
+
+    transform:scale(1);
+
+}
+
+.menu-banner:hover .banner-image img{
+
+    transform:scale(1.05);
+
+}
+
+
+/* =========================================
+   PREMIUM GLOW
+========================================= */
+
+.menu-heading h1{
+
+    text-shadow:0 0 15px rgba(212,175,55,.18);
+
+}
+
+.food-details h3{
+
+    transition:.3s;
+
+}
+
+.menu-item:hover .food-details h3{
+
+    color:#FFD700;
+
+}
+
+
+/* =========================================
+   SCROLL OFFSET
+========================================= */
+
+#menu{
+
+    scroll-margin-top:90px;
+
+}
+/* =========================================
+   LARGE DESKTOP
+========================================= */
+
+@media (min-width:1600px){
+
+    .menu-section{
+
+        max-width:1600px;
+
+    }
+
+    .menu-banner{
+
+        height:650px;
+
+    }
+
+    .banner-overlay h2{
+
+        font-size:72px;
+
+    }
+
+    .banner-overlay p{
+
+        font-size:22px;
+
+    }
+
+}
+
+
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width:400px){
+
+    .menu-section{
+
+        width:95%;
+
+    }
+
+    .menu-heading h1{
+
+        font-size:28px;
+
+    }
+
+    .banner-overlay h2{
+
+        font-size:26px;
+
+    }
+
+    .banner-overlay p{
+
+        font-size:13px;
+
+    }
+
+    .food-image{
+
+        height:170px;
+
+    }
+
+    .food-details h3{
+
+        font-size:20px;
+
+    }
+
+    .food-details p{
+
+        font-size:13px;
+
+    }
+
+    .food-price{
+
+        font-size:24px;
+
+    }
+
+}
+
+
+/* =========================================
+   CUSTOM SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#D4AF37;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#FFD700;
+
+}
+
+
+/* =========================================
+   SELECTION
+========================================= */
+
+::selection{
+
+    background:#D4AF37;
+
+    color:#000;
+
+}
+
+
+/* =========================================
+   IMAGE LOADING EFFECT
+========================================= */
+
+.food-image img,
+.banner-image img{
+
+    opacity:0;
+
+    animation:imageLoaded .8s ease forwards;
+
+}
+
+@keyframes imageLoaded{
+
+    from{
+
+        opacity:0;
+        transform:scale(1.05);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   REMOVE BUTTON OUTLINE
+========================================= */
+
+button{
+
+    outline:none;
+
+}
+
+button:focus{
+
+    outline:none;
+
+}
+
+
+/* =========================================
+   FINAL POLISH
+========================================= */
+
+.menu-section{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.menu-item{
+
+    position:relative;
+
+}
+
+.food-image{
+
+    background:#1b1b1b;
+
+}
+
+.food-image img{
+
+    display:block;
+
+}
+
+.banner-image img{
+
+    display:block;
+
+}
+
+
+/* =========================================
+   END OF CSS
+========================================= */
