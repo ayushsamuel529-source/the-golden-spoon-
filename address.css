@@ -1,0 +1,1030 @@
+/* =====================================================
+   ADDRESS SYSTEM 3.2
+   GOLDEN SPOON ADDRESS DESIGN
+===================================================== */
+
+.address-section {
+    width: 100%;
+    min-height: 100vh;
+    background: #050505;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 7%;
+    box-sizing: border-box;
+}
+
+.address-container {
+    width: 100%;
+    max-width: 1250px;
+    border: 1px solid rgba(201,161,74,.45);
+    padding: 55px;
+    box-sizing: border-box;
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #080808,
+        #0d0d0d
+    );
+}
+
+/* TOP BRAND */
+
+.address-brand-line {
+    text-align: center;
+    color: #C9A14A;
+    font-size: 13px;
+    letter-spacing: 5px;
+    font-weight: 600;
+    margin-bottom: 55px;
+}
+
+.address-brand-line span {
+    margin: 0 12px;
+}
+
+
+/* MAIN AREA */
+
+.address-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+
+/* TEXT */
+
+.address-text {
+    padding: 20px 0;
+}
+
+.address-kicker {
+    color: #C9A14A;
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: 600;
+}
+
+.address-text h1 {
+    font-size: clamp(48px, 6vw, 78px);
+    line-height: .95;
+    font-weight: 400;
+    margin: 22px 0;
+    color: #ead29a;
+}
+
+.gold-line {
+    width: 100px;
+    height: 1px;
+    background: #C9A14A;
+    margin: 28px 0;
+}
+
+.address-tagline {
+    max-width: 420px;
+    color: #bdbdbd;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* LOCATION */
+
+.address-location {
+    margin-top: 45px;
+    border-left: 2px solid #C9A14A;
+    padding-left: 22px;
+}
+
+.location-label {
+    color: #C9A14A;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 600;
+}
+
+.address-location p {
+    margin: 12px 0 0;
+    color: #fff;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+
+/* IMAGE */
+
+.address-image {
+    position: relative;
+    min-height: 480px;
+    border: 1px solid rgba(201,161,74,.35);
+    overflow: hidden;
+}
+
+.address-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* IMAGE CAPTION */
+
+.image-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(0,0,0,.78);
+    border-left: 2px solid #C9A14A;
+    padding: 15px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-caption span {
+    color: #ead29a;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.image-caption small {
+    color: #C9A14A;
+    letter-spacing: 2px;
+}
+
+
+/* FOOTER */
+
+.address-footer {
+    margin-top: 55px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(201,161,74,.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.address-footer span {
+    color: #C9A14A;
+}
+
+.address-footer p {
+    margin: 0;
+    color: #999;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .address-section {
+        padding: 70px 20px;
+    }
+
+    .address-container {
+        padding: 30px 22px;
+    }
+
+    .address-brand-line {
+        margin-bottom: 40px;
+        letter-spacing: 3px;
+    }
+
+    .address-main {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .address-text h1 {
+        font-size: 50px;
+    }
+
+    .address-image {
+        min-height: 350px;
+    }
+
+    .address-image img {
+        min-height: 350px;
+    }
+
+    .address-location p {
+        font-size: 17px;
+    }
+
+    .address-footer {
+        text-align: center;
+        gap: 10px;
+    }
+
+    .address-footer p {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.3
+   REVEAL ANIMATION
+===================================================== */
+
+.address-brand-line,
+.address-text,
+.address-image,
+.address-footer {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.address-text {
+    transition-delay: .15s;
+}
+
+.address-image {
+    transform: translateX(40px);
+    transition-delay: .3s;
+}
+
+.address-footer {
+    transition-delay: .5s;
+}
+
+
+/* ACTIVE STATE */
+
+.address-visible .address-brand-line,
+.address-visible .address-text,
+.address-visible .address-image,
+.address-visible .address-footer {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.4
+   PREMIUM GOLDEN INTERACTION
+===================================================== */
+
+.address-container {
+    transition:
+        transform 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.address-container:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(201, 161, 74, 0.7);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(201, 161, 74, 0.08);
+}
+
+
+/* GOLDEN LINE */
+
+.gold-line {
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+
+    background: #E8D09A;
+
+    animation: goldLineReveal 1.2s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes goldLineReveal {
+
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0;
+    }
+
+}
+
+
+/* BRAND SYMBOL */
+
+.address-brand-line span,
+.address-footer span {
+    display: inline-block;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.address-brand-line:hover span,
+.address-footer:hover span {
+    color: #E8D09A;
+    transform: scale(1.3);
+}
+
+
+/* LOCATION HIGHLIGHT */
+
+.address-location {
+    transition:
+        border-color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+.address-location:hover {
+    border-color: #E8D09A;
+    padding-left: 28px;
+}
+
+
+/* IMAGE HOVER */
+
+.address-image {
+    transition:
+        transform 0.45s ease,
+        border-color 0.45s ease;
+}
+
+.address-image:hover {
+    transform: scale(1.015);
+    border-color: rgba(201, 161, 74, 0.7);
+}
+
+
+/* IMAGE DARK OVERLAY */
+
+.address-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(0,0,0,0.35)
+        );
+
+    pointer-events: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .address-container:hover {
+        transform: none;
+    }
+
+    .address-image:hover {
+        transform: none;
+    }
+
+    .address-location:hover {
+        padding-left: 22px;
+    }
+
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.5
+   RESPONSIVE POLISH
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .address-section {
+        padding: 80px 30px;
+    }
+
+    .address-container {
+        grid-template-columns: 1fr;
+        gap: 45px;
+        padding: 40px;
+    }
+
+    .address-text {
+        text-align: center;
+    }
+
+    .gold-line {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .address-tagline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .address-location {
+        text-align: left;
+    }
+
+    .address-image {
+        min-height: 420px;
+    }
+
+    .address-image img {
+        min-height: 420px;
+    }
+}
+
+
+/* SMALL MOBILE */
+
+@media (max-width: 600px) {
+
+    .address-section {
+        padding: 65px 16px;
+    }
+
+    .address-container {
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .address-brand-line {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        margin-bottom: 35px;
+    }
+
+    .address-text h1 {
+        font-size: 46px;
+    }
+
+    .address-tagline {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .address-location {
+        margin-top: 32px;
+        padding-left: 18px;
+    }
+
+    .address-location p {
+        font-size: 16px;
+    }
+
+    .address-image {
+        min-height: 300px;
+    }
+
+    .address-image img {
+        min-height: 300px;
+    }
+
+    .image-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 12px 14px;
+    }
+
+    .image-caption span {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .image-caption small {
+        font-size: 9px;
+    }
+
+    .address-footer {
+        margin-top: 35px;
+    }
+
+    .address-footer p {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.6
+   TYPOGRAPHY + SPACING POLISH
+===================================================== */
+
+.address-text h1 {
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 20px rgba(201, 161, 74, 0.12);
+}
+
+.address-tagline {
+    max-width: 520px;
+    letter-spacing: 0.3px;
+}
+
+.address-location {
+    position: relative;
+}
+
+.address-location::before {
+    content: "✦";
+
+    position: absolute;
+    left: -7px;
+    top: -2px;
+
+    color: #C9A14A;
+    font-size: 10px;
+
+    transform: translateX(-100%);
+}
+
+
+/* ADDRESS TEXT */
+
+.address-location p {
+    margin: 0;
+
+    color: rgba(255,255,255,0.86);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* HOURS / EXTRA INFO */
+
+.address-info {
+    margin-top: 28px;
+}
+
+.address-info span {
+    color: #C9A14A;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+
+/* FOOTER TEXT */
+
+.address-footer {
+    text-align: center;
+}
+
+.address-footer p {
+    margin: 0;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* GOLD ACCENT */
+
+.address-accent {
+    color: #E8D09A;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .address-text h1 {
+        letter-spacing: 0.5px;
+    }
+
+    .address-location::before {
+        display: none;
+    }
+
+    .address-location p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .address-info span {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.7
+   FINAL VISUAL FINISH
+===================================================== */
+
+.address-section {
+    position: relative;
+}
+
+/* SUBTLE GOLD AMBIENT GLOW */
+
+.address-section::before {
+    content: "";
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: 10%;
+    right: -180px;
+
+    background: radial-gradient(
+        circle,
+        rgba(201,161,74,0.08),
+        transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+
+/* CONTENT HOVER */
+
+.address-content {
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.address-content:hover {
+    transform: translateY(-2px);
+}
+
+
+/* TITLE GOLD ACCENT */
+
+.address-title::after {
+    content: "";
+    display: block;
+
+    width: 55px;
+    height: 1px;
+
+    margin-top: 18px;
+
+    background: #C9A14A;
+
+    box-shadow:
+        0 0 10px rgba(201,161,74,0.35);
+
+    transition:
+        width 0.4s ease;
+}
+
+.address-content:hover .address-title::after {
+    width: 85px;
+}
+
+
+/* LOCATION BLOCK */
+
+.address-location {
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.address-location:hover {
+    transform: translateX(5px);
+
+    border-left-color: #E8D09A;
+}
+
+
+/* IMAGE FRAME */
+
+.address-image {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(201,161,74,0.35);
+
+    transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.address-image:hover {
+    border-color: rgba(201,161,74,0.7);
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,0.5),
+        0 0 25px rgba(201,161,74,0.08);
+}
+
+
+/* IMAGE LIGHT SWEEP */
+
+.address-image::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.08),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.8s ease;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.address-image:hover::before {
+    left: 140%;
+}
+
+
+/* FOOTER */
+
+.address-footer {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.address-footer:hover {
+    transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .address-section::before {
+        width: 250px;
+        height: 250px;
+
+        right: -120px;
+    }
+
+    .address-content:hover {
+        transform: none;
+    }
+
+    .address-location:hover {
+        transform: none;
+    }
+
+    .address-title::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .address-image:hover {
+        box-shadow: none;
+    }
+
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.8
+   FINAL CLEANUP + STABILITY
+===================================================== */
+
+/* Keep address section above background effects */
+
+.address-section {
+    isolation: isolate;
+}
+
+
+/* Keep content above decorative glow */
+
+.address-container,
+.address-content,
+.address-image,
+.address-footer {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Prevent decorative effects from causing overflow */
+
+.address-section::before,
+.address-image::before,
+.address-image::after {
+    pointer-events: none;
+}
+
+
+/* Smooth image display */
+
+.address-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+.address-image:hover img {
+    transform: scale(1.02);
+}
+
+
+/* Keep text readable */
+
+.address-description,
+.address-location p,
+.address-footer p {
+    overflow-wrap: break-word;
+}
+
+
+/* Final gold consistency */
+
+.address-subtitle,
+.address-label,
+.address-info span {
+    color: #C9A14A;
+}
+
+.address-title {
+    color: #E8D09A;
+}
+
+
+/* Prevent accidental horizontal scrolling */
+
+.address-section {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+/* Mobile stability */
+
+@media (max-width: 768px) {
+
+    .address-section {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .address-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .address-image {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .address-image img {
+        transform: none !important;
+    }
+
+    .address-image::before {
+        display: none;
+    }
+
+}
+
+
+/* Very small screens */
+
+@media (max-width: 400px) {
+
+    .address-section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .address-container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .address-title {
+        font-size: 40px;
+    }
+
+    .address-description {
+        font-size: 14px;
+    }
+
+}
+/* =====================================================
+   ADDRESS SYSTEM 3.9
+   FINAL MICRO POLISH
+===================================================== */
+
+.address-section {
+    scroll-margin-top: 80px;
+}
+
+
+/* Smooth focus/interaction */
+
+.address-section a,
+.address-section button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Better text rendering */
+
+.address-section h1,
+.address-section h2,
+.address-section p,
+.address-section span {
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Gold selection */
+
+.address-section ::selection {
+    background: #C9A14A;
+    color: #000;
+}
+
+
+/* Prevent accidental image dragging */
+
+.address-section img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* Accessibility: reduce animation when requested */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .address-section *,
+    .address-section::before,
+    .address-section::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
+
+
+/* Final mobile spacing */
+
+@media (max-width: 600px) {
+
+    .address-section {
+        scroll-margin-top: 60px;
+    }
+
+}
+@media (max-width: 768px) {
+    .address-image-frame img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
+}

@@ -1,0 +1,546 @@
+/* =====================================================
+   TAKEOUT SYSTEM 2.0
+   MAIN LAYOUT
+===================================================== */
+
+.takeout-section {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 20px;
+
+    background: #000;
+}
+
+.takeout-container {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 40px;
+
+    background: rgba(20, 20, 20, 0.92);
+
+    border: 1px solid rgba(201, 161, 74, 0.45);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(201, 161, 74, 0.08);
+
+    box-sizing: border-box;
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.1
+   HEADING + PICKUP TIME
+===================================================== */
+
+.takeout-title {
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    font-size: 34px;
+    font-weight: 600;
+
+    color: #C9A14A;
+
+    letter-spacing: 1px;
+}
+
+.pickup-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+}
+
+.pickup-group label {
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #ffffff;
+
+    letter-spacing: 0.5px;
+}
+
+.pickup-time {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    box-sizing: border-box;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 1px solid #555555;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.pickup-time:focus {
+    border-color: #C9A14A;
+
+    box-shadow:
+        0 0 0 2px rgba(201, 161, 74, 0.12);
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.2
+   NUMBER OF GUESTS
+===================================================== */
+
+.guests-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+}
+
+.guests-group label {
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #ffffff;
+
+    letter-spacing: 0.5px;
+}
+
+.takeout-guests {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    box-sizing: border-box;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 1px solid #555555;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.takeout-guests:focus {
+    border-color: #C9A14A;
+
+    box-shadow:
+        0 0 0 2px rgba(201, 161, 74, 0.12);
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.3
+   ORDER DETAILS
+===================================================== */
+
+.order-details-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+}
+
+.order-details-group label {
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #ffffff;
+
+    letter-spacing: 0.5px;
+}
+
+.order-details {
+    width: 100%;
+    min-height: 110px;
+
+    padding: 14px 16px;
+
+    box-sizing: border-box;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    border: 1px solid #555555;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    outline: none;
+
+    resize: vertical;
+
+    transition: 0.3s ease;
+}
+
+.order-details::placeholder {
+    color: #888888;
+}
+
+.order-details:focus {
+    border-color: #C9A14A;
+
+    box-shadow:
+        0 0 0 2px rgba(201, 161, 74, 0.12);
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.4
+   TOTAL PRICE
+===================================================== */
+
+.takeout-price {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 10px;
+    margin-bottom: 28px;
+
+    padding: 18px 20px;
+
+    background: #0d0d0d;
+
+    border: 1px solid rgba(201, 161, 74, 0.35);
+
+    border-radius: 12px;
+}
+
+.price-label {
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.price-value {
+    color: #C9A14A;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.5
+   PLACE ORDER BUTTON
+===================================================== */
+
+.place-order-btn {
+    width: 100%;
+
+    padding: 15px 20px;
+
+    background: #C9A14A;
+
+    color: #000000;
+
+    border: 1px solid #C9A14A;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+.place-order-btn:hover {
+    background: #A67C2E;
+
+    box-shadow:
+        0 8px 25px rgba(201, 161, 74, 0.25);
+
+    transform: translateY(-2px);
+}
+
+.place-order-btn:active {
+    transform: translateY(0);
+}
+
+.place-order-btn:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.6
+   SUCCESS MODAL
+===================================================== */
+
+.takeout-success-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+}
+
+.takeout-success-modal.active {
+    display: flex;
+}
+
+.takeout-success-box {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 40px 30px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background: #111111;
+
+    border: 1px solid rgba(201, 161, 74, 0.55);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.7),
+        0 0 35px rgba(201, 161, 74, 0.12);
+}
+
+.takeout-success-box .success-icon {
+    display: flex;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 20px;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #C9A14A;
+
+    border-radius: 50%;
+
+    color: #C9A14A;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.takeout-success-box h2 {
+    margin: 0 0 15px;
+
+    color: #C9A14A;
+
+    font-size: 27px;
+}
+
+.takeout-success-box p {
+    margin: 0 auto 25px;
+
+    max-width: 340px;
+
+    color: #cccccc;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+.takeout-success-box p strong {
+    color: #C9A14A;
+}
+
+#closeTakeoutSuccess {
+    width: 100%;
+
+    padding: 13px 20px;
+
+    background: #C9A14A;
+
+    color: #000000;
+
+    border: 1px solid #C9A14A;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#closeTakeoutSuccess:hover {
+    background: #A67C2E;
+
+    transform: translateY(-2px);
+}
+/* =====================================================
+   TAKEOUT SYSTEM 2.7
+   RESPONSIVE DESIGN
+===================================================== */
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 768px) {
+
+    .takeout-section {
+        padding: 80px 18px;
+    }
+
+    .takeout-container {
+        max-width: 500px;
+        padding: 32px 25px;
+    }
+
+    .takeout-title {
+        font-size: 30px;
+    }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 480px) {
+
+    .takeout-section {
+        min-height: 100vh;
+
+        padding: 70px 14px;
+    }
+
+    .takeout-container {
+        width: 100%;
+
+        padding: 26px 18px;
+
+        border-radius: 16px;
+    }
+
+    .takeout-title {
+        margin-bottom: 24px;
+
+        font-size: 26px;
+
+        letter-spacing: 0.5px;
+    }
+
+    .pickup-group,
+    .guests-group,
+    .order-details-group {
+        margin-bottom: 20px;
+    }
+
+    .pickup-time,
+    .takeout-guests,
+    .order-details {
+        font-size: 14px;
+    }
+
+    .takeout-price {
+        padding: 15px 16px;
+
+        margin-bottom: 22px;
+    }
+
+    .price-label {
+        font-size: 14px;
+    }
+
+    .price-value {
+        font-size: 21px;
+    }
+
+    .place-order-btn {
+        padding: 14px 18px;
+
+        font-size: 15px;
+    }
+
+    .takeout-success-box {
+        padding: 32px 22px;
+    }
+
+    .takeout-success-box h2 {
+        font-size: 24px;
+    }
+
+    .takeout-success-box p {
+        font-size: 14px;
+    }
+
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+
+@media (max-width: 360px) {
+
+    .takeout-section {
+        padding: 60px 10px;
+    }
+
+    .takeout-container {
+        padding: 24px 15px;
+    }
+
+    .takeout-title {
+        font-size: 23px;
+    }
+
+    .takeout-price {
+        flex-direction: column;
+
+        gap: 6px;
+
+        text-align: center;
+    }
+
+}

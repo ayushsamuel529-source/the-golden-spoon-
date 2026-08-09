@@ -137,35 +137,27 @@ gap:70px;
 .about-text{
 flex:2;
 }
-
 .about-text h1,
 .typing-text {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-size: 48px;
-  color: #D4AF37;
-  margin-bottom: 25px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 48px;
+    color: #D4AF37;
+    margin-bottom: 25px;
 
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  opacity:0;
+    display: block;
+    width: auto;
+    overflow: visible;
+    white-space: normal;
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 /* Handwriting animation */
-@keyframes handwriting {
-  0% {
-    width: 0;
-    opacity: 0.3;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
-}
+
 
 /* Soft pen blink */
 
@@ -182,17 +174,17 @@ filter:blur(0);
 }
 }
 
-
 .about-text p {
-  color: #D4AF37;
-  font-size: 19px;              /* Letters thoda bada */
-  opacity: 0;
-  transform: translateY(25px);
+    color: #D4AF37;
+    font-size: 19px;
+    opacity: 0;
+    transform: translateY(25px);
+    margin-bottom: 18px;
 
-  margin-bottom: 18px;
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-
 
 @keyframes paraReveal{
 
@@ -294,3 +286,56 @@ transform:translateY(0);
 }
 
 }
+/* =====================================================
+   ABOUT — MOBILE SMOOTH TEXT REVEAL
+===================================================== */
+
+.about-text h1,
+.about-text p {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Heading */
+.about-text.about-text-visible h1,
+.about-text.about-text-visible .typing-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Paragraphs */
+.about-text.about-text-visible p {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Paragraphs one after another */
+.about-text.about-text-visible p:nth-of-type(1) {
+    transition-delay: 0.25s;
+}
+
+.about-text.about-text-visible p:nth-of-type(2) {
+    transition-delay: 0.45s;
+}
+
+.about-text.about-text-visible p:nth-of-type(3) {
+    transition-delay: 0.65s;
+}
+
+
+/* MOBILE */
+
+
+    .about-text.about-text-visible h1,
+    .about-text.about-text-visible .typing-text,
+    .about-text.about-text-visible p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+

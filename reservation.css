@@ -1,0 +1,1915 @@
+/* =====================================================
+   RESERVATION SECTION
+===================================================== */
+
+.reservation-section{
+    width:100%;
+    padding:120px 8%;
+    background:#0d0d0d;
+    position:relative;
+    overflow:hidden;
+}
+
+.reservation-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top right,
+    rgba(201,161,74,.08),
+    transparent 45%);
+    pointer-events:none;
+}
+
+.reservation-container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+/* =====================================================
+   RESERVATION HEADER
+===================================================== */
+
+.reservation-header{
+    text-align:center;
+    margin-bottom:70px;
+    animation:fadeUp 1s ease;
+}
+
+.reservation-subtitle{
+    display:inline-block;
+    color:#C9A14A;
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    position:relative;
+}
+
+.reservation-subtitle::before,
+.reservation-subtitle::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:55px;
+    height:1px;
+    background:#C9A14A;
+}
+
+.reservation-subtitle::before{
+    right:calc(100% + 18px);
+}
+
+.reservation-subtitle::after{
+    left:calc(100% + 18px);
+}
+
+.reservation-header h2{
+    color:#ffffff;
+    font-size:52px;
+    font-weight:700;
+    margin:18px 0;
+    line-height:1.2;
+    font-family:"Georgia",serif;
+}
+
+.reservation-header p{
+    max-width:760px;
+    margin:auto;
+    color:#bdbdbd;
+    font-size:18px;
+    line-height:1.8;
+    font-weight:300;
+}
+/* =====================================================
+   RESERVATION CARD
+===================================================== */
+
+.reservation-card{
+    width:100%;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(201,161,74,.25);
+    border-radius:28px;
+
+    padding:55px;
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+    0 15px 50px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+    transition:.45s ease;
+}
+
+.reservation-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:60%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    transition:1s;
+}
+
+.reservation-card:hover::before{
+    left:160%;
+}
+
+.reservation-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#C9A14A;
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.60),
+    0 0 35px rgba(201,161,74,.18);
+
+}
+/* =====================================================
+   RESERVATION GRID
+===================================================== */
+
+.reservation-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,minmax(280px,1fr));
+
+    gap:28px;
+
+    margin-bottom:40px;
+
+    align-items:end;
+
+}
+
+.input-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    position:relative;
+
+}
+
+.input-box.full-width{
+
+    grid-column:1 / -1;
+
+}
+
+.input-box label{
+
+    color:#C9A14A;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    margin-bottom:10px;
+
+    text-transform:uppercase;
+
+}
+/* =====================================================
+   INPUTS, SELECTS & DATE/TIME
+===================================================== */
+
+.input-box input,
+.input-box select{
+
+    width:100%;
+
+    height:58px;
+
+    padding:0 18px;
+
+    background:#151515;
+
+    color:#ffffff;
+
+    border:1px solid rgba(201,161,74,.25);
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    transition:.35s ease;
+
+    box-sizing:border-box;
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    cursor:pointer;
+
+}
+
+/* Placeholder */
+
+.input-box input::placeholder{
+
+    color:#888;
+
+}
+
+/* Hover */
+
+.input-box input:hover,
+.input-box select:hover{
+
+    border-color:#C9A14A;
+
+}
+
+/* Focus */
+
+.input-box input:focus,
+.input-box select:focus{
+
+    border-color:#C9A14A;
+
+    box-shadow:
+    0 0 0 4px rgba(201,161,74,.12);
+
+    background:#1b1b1b;
+
+}
+
+/* Dropdown Option */
+
+.input-box select option{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+/* Date & Time Icon */
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator{
+
+    cursor:pointer;
+
+    opacity:.9;
+
+    filter:invert(82%) sepia(24%) saturate(620%) hue-rotate(357deg);
+
+}
+
+/* Disabled */
+
+.input-box input:disabled,
+.input-box select:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+}
+/* =====================================================
+   VALIDATION + PRICE BOX
+===================================================== */
+
+#validationMessage{
+
+    margin:10px 0 30px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#ffb84d;
+
+    min-height:24px;
+
+    transition:.3s ease;
+
+}
+
+/* PRICE BOX */
+
+.price-box{
+
+    background:linear-gradient(
+        135deg,
+        rgba(201,161,74,.12),
+        rgba(255,255,255,.03)
+    );
+
+    border:1px solid rgba(201,161,74,.30);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
+
+    transition:.4s ease;
+
+}
+
+.price-box:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#C9A14A;
+
+    box-shadow:
+    0 25px 55px rgba(0,0,0,.45),
+    0 0 25px rgba(201,161,74,.18);
+
+}
+
+.price-box h3{
+
+    color:#d7d7d7;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    margin-bottom:12px;
+
+    letter-spacing:1px;
+
+}
+
+#totalPrice{
+
+    color:#C9A14A;
+
+    font-size:54px;
+
+    font-weight:700;
+
+    margin:10px 0;
+
+    line-height:1;
+
+    text-shadow:0 0 15px rgba(201,161,74,.18);
+
+}
+
+.price-box p{
+
+    color:#bfbfbf;
+
+    font-size:15px;
+
+    margin-top:12px;
+
+    letter-spacing:.5px;
+
+}
+/* =====================================================
+   RESERVE BUTTON
+===================================================== */
+
+#reserveBtn{
+
+    width:100%;
+
+    height:62px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #C9A14A,
+        #E5C36A
+    );
+
+    color:#111;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+
+    box-shadow:
+    0 15px 35px rgba(201,161,74,.28);
+
+}
+
+/* Shine Effect */
+
+#reserveBtn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.55),
+
+        transparent
+
+    );
+
+    transition:.8s;
+
+}
+
+#reserveBtn:hover::before{
+
+    left:160%;
+
+}
+
+/* Hover */
+
+#reserveBtn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+    0 22px 45px rgba(201,161,74,.40);
+
+    background:linear-gradient(
+
+        135deg,
+
+        #D9B35C,
+
+        #F0CF7A
+
+    );
+
+}
+
+/* Click */
+
+#reserveBtn:active{
+
+    transform:scale(.98);
+
+}
+
+/* Keyboard Focus */
+
+#reserveBtn:focus{
+
+    outline:none;
+
+    box-shadow:
+
+    0 0 0 5px rgba(201,161,74,.18);
+
+}
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width:992px){
+
+    .reservation-section{
+
+        padding:90px 6%;
+
+    }
+
+    .reservation-card{
+
+        padding:40px;
+
+    }
+
+    .reservation-header h2{
+
+        font-size:42px;
+
+    }
+
+    .reservation-grid{
+
+        grid-template-columns:1fr;
+
+        gap:22px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .reservation-section{
+
+        padding:80px 5%;
+
+    }
+
+    .reservation-header{
+
+        margin-bottom:50px;
+
+    }
+
+    .reservation-header h2{
+
+        font-size:34px;
+
+    }
+
+    .reservation-header p{
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+    .reservation-card{
+
+        padding:28px;
+
+        border-radius:22px;
+
+    }
+
+    .reservation-subtitle{
+
+        font-size:12px;
+
+        letter-spacing:3px;
+
+    }
+
+    .reservation-subtitle::before,
+    .reservation-subtitle::after{
+
+        width:35px;
+
+    }
+
+    .price-box{
+
+        padding:28px 20px;
+
+    }
+
+    #totalPrice{
+
+        font-size:42px;
+
+    }
+
+    #reserveBtn{
+
+        height:58px;
+
+        font-size:17px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .reservation-section{
+
+        padding:70px 18px;
+
+    }
+
+    .reservation-header h2{
+
+        font-size:28px;
+
+    }
+
+    .reservation-header p{
+
+        font-size:14px;
+
+    }
+
+    .reservation-card{
+
+        padding:22px;
+
+    }
+
+    .input-box input,
+    .input-box select{
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+    .price-box h3{
+
+        font-size:16px;
+
+    }
+
+    #totalPrice{
+
+        font-size:36px;
+
+    }
+
+    .price-box p{
+
+        font-size:13px;
+
+    }
+
+    #reserveBtn{
+
+        height:54px;
+
+        font-size:16px;
+
+    }
+
+}
+/* =====================================================
+   LUXURY ANIMATIONS
+===================================================== */
+
+/* Fade Up */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Soft Floating */
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Golden Glow */
+
+@keyframes goldGlow{
+
+    0%{
+
+        box-shadow:
+        0 0 0 rgba(201,161,74,0);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 30px rgba(201,161,74,.18);
+
+    }
+
+    100%{
+
+        box-shadow:
+        0 0 0 rgba(201,161,74,0);
+
+    }
+
+}
+
+/* Section Animation */
+
+.reservation-header{
+
+    animation:fadeUp .9s ease forwards;
+
+}
+
+.reservation-card{
+
+    animation:fadeUp 1.2s ease forwards;
+
+}
+
+/* Floating Price Card */
+
+.price-box{
+
+    animation:
+    floating 5s ease-in-out infinite;
+
+}
+
+/* Golden Pulse */
+
+#reserveBtn{
+
+    animation:
+    goldGlow 3.5s infinite;
+
+}
+
+/* Inputs Hover */
+
+.input-box{
+
+    transition:.35s ease;
+
+}
+
+.input-box:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* Price Animation */
+
+#totalPrice{
+
+    transition:.35s ease;
+
+}
+
+.price-box:hover #totalPrice{
+
+    transform:scale(1.06);
+
+}
+
+/* Smooth Label */
+
+.input-box label{
+
+    transition:.3s ease;
+
+}
+
+.input-box:hover label{
+
+    color:#FFD978;
+
+}
+
+/* Luxury Card Transition */
+
+.reservation-card,
+.price-box,
+#reserveBtn,
+.input-box input,
+.input-box select{
+
+    transition:all .35s ease;
+
+}
+/* =====================================================
+   3.8.2 LUXURY SUCCESS MODAL CSS
+===================================================== */
+
+.success-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    visibility:hidden;
+
+    opacity:0;
+
+    transition:.35s ease;
+
+    z-index:9999;
+
+}
+
+.success-modal.active{
+
+    visibility:visible;
+
+    opacity:1;
+
+}
+
+/* ---------------------------------------------
+   SUCCESS BOX
+----------------------------------------------*/
+
+.success-box{
+
+    width:420px;
+
+    max-width:90%;
+
+    background:#111;
+
+    border:2px solid #C9A14A;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    color:#fff;
+
+    box-shadow:
+    0 0 35px rgba(201,161,74,.35);
+
+    transform:scale(.8);
+
+    transition:.35s ease;
+
+}
+
+.success-modal.active .success-box{
+
+    transform:scale(1);
+
+}
+
+/* ---------------------------------------------
+   ICON
+----------------------------------------------*/
+
+.success-icon{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:#C9A14A;
+
+    color:#111;
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    margin-bottom:22px;
+
+}
+
+/* ---------------------------------------------
+   TITLE
+----------------------------------------------*/
+
+.success-box h2{
+
+    margin:0;
+
+    font-size:32px;
+
+    color:#C9A14A;
+
+}
+
+/* ---------------------------------------------
+   TEXT
+----------------------------------------------*/
+
+.success-box p{
+
+    margin:20px 0 30px;
+
+    color:#ddd;
+
+    line-height:1.8;
+
+}
+
+/* ---------------------------------------------
+   BUTTON
+----------------------------------------------*/
+
+.success-box button{
+
+    padding:14px 34px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#C9A14A;
+
+    color:#111;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.success-box button:hover{
+
+    background:#b98f2e;
+
+}
+/* =====================================================
+   3.10 LUXURY BUTTON EFFECT
+===================================================== */
+
+#reserveBtn{
+
+    transition:
+    .35s ease;
+
+}
+
+#reserveBtn:hover{
+
+    transform:
+    translateY(-2px);
+
+    box-shadow:
+    0 12px 35px rgba(201,161,74,.35);
+
+}
+
+#reserveBtn:active{
+
+    transform:
+    scale(.97);
+
+}
+
+#reserveBtn.loading{
+
+    opacity:.75;
+
+    pointer-events:none;
+
+    cursor:not-allowed;
+
+}
+/* =====================================================
+   3.1 LUXURY RESERVE BUTTON
+===================================================== */
+
+.reserve-btn{
+
+    width:100%;
+
+    padding:15px 25px;
+
+    margin-top:20px;
+
+    background:#C9A14A;
+
+    color:#000;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+
+/* HOVER EFFECT */
+
+.reserve-btn:hover{
+
+    background:#A67C2E;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* DISABLED BUTTON */
+
+.reserve-btn:disabled{
+
+    background:#555;
+
+    color:#aaa;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+
+/* =====================================================
+   LOADING EFFECT
+===================================================== */
+
+.reserve-btn.loading{
+
+    opacity:.7;
+
+    pointer-events:none;
+
+}
+
+
+/* LOADING TEXT */
+
+.reserve-btn.loading::after{
+
+    content:"";
+
+    display:inline-block;
+
+    width:14px;
+
+    height:14px;
+
+    margin-left:10px;
+
+    border:2px solid #000;
+
+    border-top-color:transparent;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+
+/* SPINNER ANIMATION */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/* =====================================================
+   3.2 LUXURY SUCCESS MODAL
+===================================================== */
+
+
+/* MODAL BACKGROUND */
+
+.success-modal{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.4s ease;
+
+    z-index:9999;
+
+}
+
+
+/* ACTIVE MODAL */
+
+.success-modal.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/* SUCCESS BOX */
+
+.success-box{
+
+    width:90%;
+
+    max-width:420px;
+
+    background:#111;
+
+    border:1px solid #C9A14A;
+
+    border-radius:20px;
+
+    padding:35px 30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+
+    animation:modalShow .4s ease;
+
+}
+
+
+/* ICON */
+
+.success-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:#C9A14A;
+
+    color:#000;
+
+    font-size:40px;
+
+    font-weight:bold;
+
+}
+
+
+/* HEADING */
+
+.success-box h2{
+
+    color:#C9A14A;
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+
+/* TEXT */
+
+.success-box p{
+
+    color:#ddd;
+
+    line-height:1.7;
+
+    font-size:16px;
+
+}
+
+
+/* BUTTON */
+
+#closeSuccess{
+
+    margin-top:25px;
+
+    padding:12px 35px;
+
+    background:#C9A14A;
+
+    color:#000;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+#closeSuccess:hover{
+
+    background:#A67C2E;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* OPEN ANIMATION */
+
+@keyframes modalShow{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+/* =====================================================
+   3.3 LUXURY RESERVATION INPUT DESIGN
+===================================================== */
+
+
+/* RESERVATION CARD */
+
+.reservation-card{
+
+    background:#0f0f0f;
+
+    border:1px solid rgba(201,161,74,.35);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.5);
+
+}
+
+
+/* GRID */
+
+.reservation-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+
+/* INPUT BOX */
+
+.input-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+/* LABEL */
+
+.input-box label{
+
+    color:#C9A14A;
+
+    font-size:15px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+
+/* INPUT + SELECT */
+
+.input-box input,
+.input-box select{
+
+    width:100%;
+
+    padding:14px 15px;
+
+    background:#171717;
+
+    color:#fff;
+
+    border:1px solid #333;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s ease;
+
+}
+
+
+/* FOCUS EFFECT */
+
+.input-box input:focus,
+.input-box select:focus{
+
+    border-color:#C9A14A;
+
+    box-shadow:
+    0 0 12px rgba(201,161,74,.3);
+
+}
+
+
+/* SELECT OPTION */
+
+.input-box select option{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+
+/* FULL WIDTH ITEM */
+
+.full-width{
+
+    grid-column:
+    1 / -1;
+
+}
+
+
+/* VALIDATION MESSAGE */
+
+#validationMessage{
+
+    margin-top:20px;
+
+    font-size:15px;
+
+    min-height:22px;
+
+}
+
+
+/* PRICE BOX */
+
+.price-box{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    background:#151515;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    border:1px solid rgba(201,161,74,.25);
+
+}
+
+
+.price-box h3{
+
+    color:#C9A14A;
+
+    margin-bottom:10px;
+
+}
+
+
+.price-box h1{
+
+    color:#fff;
+
+    font-size:38px;
+
+    margin:10px 0;
+
+}
+
+
+.price-box p{
+
+    color:#aaa;
+
+}
+/* =====================================================
+   3.4 RESPONSIVE DESIGN
+===================================================== */
+
+
+/* TABLET */
+
+@media(max-width:900px){
+
+    .reservation-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .reservation-card{
+
+        padding:25px;
+
+    }
+
+
+    .price-box h1{
+
+        font-size:32px;
+
+    }
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+
+    .reservation-card{
+
+        width:100%;
+
+        padding:20px;
+
+        border-radius:16px;
+
+    }
+
+
+
+    .input-box input,
+    .input-box select{
+
+        padding:12px;
+
+        font-size:14px;
+
+    }
+
+
+
+    .input-box label{
+
+        font-size:14px;
+
+    }
+
+
+
+    .reserve-btn{
+
+        padding:13px;
+
+        font-size:16px;
+
+    }
+
+
+
+    .success-box{
+
+        width:90%;
+
+        padding:25px 20px;
+
+    }
+
+
+
+    .success-box h2{
+
+        font-size:23px;
+
+    }
+
+
+
+    .success-box p{
+
+        font-size:14px;
+
+    }
+
+
+
+    .success-icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:32px;
+
+    }
+
+
+
+    .price-box h1{
+
+        font-size:28px;
+
+    }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media(max-width:380px){
+
+
+    .reservation-card{
+
+        padding:15px;
+
+    }
+
+
+    .reserve-btn{
+
+        font-size:15px;
+
+    }
+
+
+    .price-box h1{
+
+        font-size:24px;
+
+    }
+
+}
+/* =====================================================
+   3.5 PAYMENT PROCESSING EFFECT
+===================================================== */
+
+
+/* BUTTON PROCESSING */
+
+.reserve-btn.loading{
+
+    background:#A67C2E;
+
+    color:#000;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+/* SHINE EFFECT */
+
+.reserve-btn.loading::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+    );
+
+    animation:
+    shine 1.2s infinite;
+
+}
+
+
+
+/* SPINNER */
+
+.reserve-btn.loading::after{
+
+    content:"";
+
+    display:inline-block;
+
+    width:14px;
+
+    height:14px;
+
+    margin-left:10px;
+
+    border:2px solid #000;
+
+    border-top-color:transparent;
+
+    border-radius:50%;
+
+    animation:
+    spin .8s linear infinite;
+
+}
+
+
+
+/* SHINE ANIMATION */
+
+@keyframes shine{
+
+    from{
+
+        left:-100%;
+
+    }
+
+    to{
+
+        left:100%;
+
+    }
+
+}
+
+
+
+/* SPIN ANIMATION */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/* =====================================================
+   3.6 FINAL LUXURY EFFECTS
+===================================================== */
+
+
+/* RESERVATION CARD ENTRY */
+
+.reservation-card{
+
+    animation:
+    cardReveal .8s ease forwards;
+
+}
+
+
+
+@keyframes cardReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+
+/* INPUT HOVER */
+
+.input-box input:hover,
+.input-box select:hover{
+
+    border-color:#C9A14A;
+
+}
+
+
+
+/* PRICE BOX PREMIUM GLOW */
+
+.price-box{
+
+    transition:.4s ease;
+
+}
+
+
+
+.price-box:hover{
+
+    transform:
+    translateY(-5px);
+
+    box-shadow:
+    0 15px 40px rgba(201,161,74,.25);
+
+}
+
+
+
+/* SUCCESS BUTTON PULSE */
+
+#closeSuccess{
+
+    animation:
+    pulseGold 2s infinite;
+
+}
+
+
+
+@keyframes pulseGold{
+
+    0%{
+
+        box-shadow:
+        0 0 0 0 rgba(201,161,74,.5);
+
+    }
+
+
+    70%{
+
+        box-shadow:
+        0 0 0 15px rgba(201,161,74,0);
+
+    }
+
+
+    100%{
+
+        box-shadow:
+        0 0 0 0 rgba(201,161,74,0);
+
+    }
+
+}
+
+
+
+/* SMOOTH SCROLL */
+
+html{
+
+    scroll-behavior:smooth;
+
+}

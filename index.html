@@ -145,10 +145,12 @@ body {
   opacity: 0;
   transition: 1s;
 }
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    background:#000;
 }
 .slide.active { opacity: 1; }
 
@@ -187,71 +189,107 @@ body {
    MOBILE RESPONSIVE
 ========================================= */
 
-@media (max-width:768px){
+/* =========================================
+   MOBILE + TABLET IMAGE FIT
+   FULL IMAGE — NO CROP
+========================================= */
 
-    /* Top Buttons */
-   
-    /* Menu Icon */
-    .menu-icon{
-        top:15px;
-        left:15px;
-        font-size:28px;
+@media (max-width: 1024px) {
+
+    .slider {
+        width: 100%;
+        height: calc(100vw * 1.7778);
+        position: relative;
+        overflow: hidden;
+        background: #000;
     }
 
-    /* Slider */
-    .slider{
-        height:100vh;
+    .slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .slide img{
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        object-position:center;
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        background: #000;
     }
 
-    /* Arrows */
-    .arrow{
-        font-size:22px;
-        padding:8px 12px;
+    /* MENU */
+    .menu-icon {
+        top: 15px;
+        left: 15px;
+        font-size: 28px;
+        z-index: 2000;
     }
 
-    .left{
-        left:10px;
+    /* ARROWS */
+    .arrow {
+        font-size: 22px;
+        padding: 8px 12px;
+        z-index: 1000;
     }
 
-    .right{
-        right:10px;}
-        /* TOP BUTTONS MOBILE */
+    .left {
+        left: 10px;
+    }
 
-.top-buttons{
-    top:10px;
-    right:10px;
-    gap:8px;
+    .right {
+        right: 10px;
+    }
+
+    /* TOP BUTTONS */
+    .top-buttons {
+        top: 10px;
+        right: 10px;
+        gap: 8px;
+    }
+
+    .takeout,
+    .reservation {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+.top-buttons a,
+.top-buttons a:link,
+.top-buttons a:visited,
+.top-buttons a:hover,
+.top-buttons a:active {
+    text-decoration: none !important;
 }
 
-.takeout,
-.reservation{
-    padding:8px 12px;
-    font-size:14px;
-}
-    }
-
-}
 </style>
 <link rel="stylesheet" href="about.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="khanna.css">
+<link rel="stylesheet" href="reservation.css">
+<link rel="stylesheet" href="takeout.css">
+
+<link rel="stylesheet" href="address.css">
 </head>
 
 <body>
 
-<!-- TOP BUTTONS -->
 <div class="top-buttons">
-  <div class="takeout">Takeout</div>
-  <div class="reservation">Reservation</div>
-</div>
 
+    <a href="#takeout" class="takeout">
+        Takeout
+    </a>
+
+    <a href="#reservation" class="reservation">
+        Reservation
+    </a>
+
+</div>
 <!-- MENU -->
 <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
 
@@ -263,8 +301,9 @@ body {
   <a href="#about">about</a>
   <a href="#menu">Menu</a>
   <a href="#reservation">Reservation</a>
+   <a href="#takeout">Takeout</a>
   <a href="#address">Address</a>
-  <a href="#takeout">Takeout</a>
+ 
 </div>
 
 <!-- SLIDER -->
@@ -361,7 +400,7 @@ function toggleMenu(){
 
 
 
-menu section 
+menu section
 <!-- ========================================= -->
 <!-- MENU SECTION START -->
 <!-- ========================================= -->
@@ -1073,9 +1112,662 @@ menu section
 
 </section>
 
-<script src="lunch.js"></script>
-<script src="about.js"></script>
-</body>
+
 <!-- ========================= -->
 <!-- MENU SECTION END -->
 <!-- ========================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+reservation 
+<!-- ===========================
+     RESERVATION SECTION
+=========================== -->
+
+<section class="reservation-section" id="reservation">
+
+    <div class="reservation-container">
+
+        <div class="reservation-header">
+
+            <span class="reservation-subtitle">
+                TABLE BOOKING
+            </span>
+
+            <h2>
+                Reserve Your Table
+            </h2>
+
+            <p>
+                Experience premium dining at The Golden Spoon.
+                Reserve your table in advance and enjoy a luxurious
+                dining experience with your family and friends.
+            </p>
+
+        </div>
+
+        <div class="reservation-card">
+
+            <div class="reservation-grid">
+
+                <!-- Date -->
+
+                <div class="input-box">
+
+                    <label>
+                        Reservation Date
+                    </label>
+
+                    <input
+                    type="date"
+                    id="bookingDate">
+
+                </div>
+
+                <!-- Time -->
+
+                <div class="input-box">
+
+                    <label>
+                        Reservation Time
+                    </label>
+
+                    <input
+                    type="time"
+                    id="bookingTime">
+
+                </div>
+
+                <!-- Slot -->
+
+                <div class="input-box">
+
+                    <label>
+                        Dining Slot
+                    </label>
+
+                   <select id="bookingSlot">
+
+    <option value="Lunch">Lunch</option>
+
+    <option value="Dinner">Dinner</option>
+
+</select>
+
+                </div>
+
+                <!-- Guests -->
+
+                <div class="input-box">
+
+                    <label>
+                        Guests
+                    </label>
+
+                    <select id="guestCount">
+
+                     <option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+<option value="60">60</option>
+<option value="61">61</option>
+<option value="62">62</option>
+<option value="63">63</option>
+<option value="64">64</option>
+<option value="65">65</option>
+<option value="66">66</option>
+<option value="67">67</option>
+<option value="68">68</option>
+<option value="69">69</option>
+<option value="70">70</option>
+<option value="71">71</option>
+<option value="72">72</option>
+<option value="73">73</option>
+<option value="74">74</option>
+<option value="75">75</option>
+<option value="76">76</option>
+<option value="77">77</option>
+<option value="78">78</option>
+<option value="79">79</option>
+<option value="80">80</option>
+<option value="81">81</option>
+<option value="82">82</option>
+<option value="83">83</option>
+<option value="84">84</option>
+<option value="85">85</option>
+<option value="86">86</option>
+<option value="87">87</option>
+<option value="88">88</option>
+<option value="89">89</option>
+<option value="90">90</option>
+<option value="91">91</option>
+<option value="92">92</option>
+<option value="93">93</option>
+<option value="94">94</option>
+<option value="95">95</option>
+<option value="96">96</option>
+<option value="97">97</option>
+<option value="98">98</option>
+<option value="99">99</option>
+<option value="100">100</option>
+                    </select>
+
+                </div>
+
+                <!-- Hours -->
+
+                <div class="input-box">
+
+                    <label>
+                        Duration (Hours)
+                    </label>
+
+                    <select id="hours">
+
+                     
+
+
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="12">12</option>
+    <option value="24">Full Day (24 Hours)</option>
+
+
+                    </select>
+
+                </div>
+
+                <!-- Minutes -->
+
+                <div class="input-box">
+
+                    <label>
+                        Duration (Minutes)
+                    </label>
+
+                    <select id="minutes">
+<option value="00">00</option>
+<option value="15">15</option>
+<option value="30">30</option>
+<option value="45">45</option>
+<option value="50">50</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Live Validation -->
+
+            <div id="validationMessage">
+
+            </div>
+
+            <!-- Price Card -->
+
+            <div class="price-box">
+
+                <h3>
+                    Estimated Price
+                </h3>
+
+                <h1 id="totalPrice">
+
+                    ₹0
+
+                </h1>
+
+                <p>
+
+                    ₹500 Per Person / Hour
+
+                </p>
+
+            </div>
+
+            <!-- Button -->
+<button type="button" id="reserveBtn">
+                Reserve Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     3.8 LUXURY SUCCESS MODAL
+===================================================== -->
+
+<div id="successModal" class="success-modal">
+
+    <div class="success-box">
+
+        <span class="success-icon">
+            ✓
+        </span>
+
+        <h2>
+            Reservation Confirmed
+        </h2>
+
+        <p>
+
+            Thank you for choosing
+            <strong>The Golden Spoon</strong>.
+
+            Your reservation has been
+            successfully received.
+
+        </p>
+
+       <button 
+type="button" 
+id="reserveBtn"
+class="reserve-btn">
+
+    <span class="btn-text">
+        Reserve Now
+    </span>
+
+</button>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.0
+     MAIN CONTAINER
+===================================================== -->
+<section id="takeout" class="takeout-section">
+
+    <div class="takeout-container">
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.1
+     HEADING + PICKUP TIME
+===================================================== -->
+
+<h1 class="takeout-title">
+    Order Your Takeout
+</h1>
+
+<div class="pickup-group">
+
+    <label for="pickupTime">
+        Pick-up Time
+    </label>
+
+    <select id="pickupTime" class="pickup-time">
+
+        <option value="18:00">
+            Time: 6 : 00 PM
+        </option>
+
+        <option value="18:30">
+            Time: 6 : 30 PM
+        </option>
+
+        <option value="19:00">
+            Time: 7 : 00 PM
+        </option>
+
+        <option value="19:30">
+            Time: 7 : 30 PM
+        </option>
+
+        <option value="20:00">
+            Time: 8 : 00 PM
+        </option>
+
+        <option value="20:30">
+            Time: 8 : 30 PM
+        </option>
+
+        <option value="21:00">
+            Time: 9 : 00 PM
+        </option>
+
+        <option value="21:30">
+            Time: 9 : 30 PM
+        </option>
+
+        <option value="22:00">
+            Time: 10 : 00 PM
+        </option>
+
+    </select>
+
+</div>
+        <!-- Everything will come here -->
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.2
+     NUMBER OF GUESTS
+===================================================== -->
+
+<div class="guests-group">
+
+    <label for="takeoutGuests">
+        Number of Guests
+    </label>
+
+    <input
+        type="number"
+        id="takeoutGuests"
+        class="takeout-guests"
+        min="1"
+        value="1"
+    >
+
+</div>
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.3
+     ORDER DETAILS
+===================================================== -->
+
+<div class="order-details-group">
+
+    <label for="orderDetails">
+        Order Details
+    </label>
+
+    <textarea
+        id="orderDetails"
+        class="order-details"
+        placeholder="Enter your order details..."
+        rows="4"
+    ></textarea>
+
+</div>
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.4
+     TOTAL PRICE
+===================================================== -->
+
+<div class="takeout-price">
+
+    <span class="price-label">
+        Total Price
+    </span>
+
+    <span id="takeoutTotalPrice" class="price-value">
+        ₹0
+    </span>
+
+</div>
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.5
+     PLACE ORDER BUTTON
+===================================================== -->
+
+<button
+    type="button"
+    id="placeOrderBtn"
+    class="place-order-btn"
+>
+    Place Your Order
+</button>
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.6
+     ORDER SUCCESS MODAL
+===================================================== -->
+
+<div
+    id="takeoutSuccessModal"
+    class="takeout-success-modal"
+>
+
+    <div class="takeout-success-box">
+
+        <span class="success-icon">
+            ✓
+        </span>
+
+        <h2>
+            Order Confirmed
+        </h2>
+
+        <p>
+            Thank you for choosing
+            <strong>The Golden Spoon</strong>.
+            Your takeout order has been
+            successfully received.
+        </p>
+
+        <button
+            type="button"
+            id="closeTakeoutSuccess"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     ADDRESS SYSTEM 3.1
+     GOLDEN SPOON ADDRESS
+===================================================== -->
+
+<section id="address" class="address-section">
+
+    <div class="address-container">
+
+        <!-- TOP BRAND -->
+
+        <div class="address-brand-line">
+            <span>✦</span>
+            THE GOLDEN SPOON
+            <span>✦</span>
+        </div>
+
+
+        <!-- MAIN CONTENT -->
+
+        <div class="address-main">
+
+            <div class="address-text">
+
+                <span class="address-kicker">
+                    OUR ADDRESS
+                </span>
+
+                <h1>
+                    Visit<br>
+                    The Golden Spoon
+                </h1>
+
+                <div class="gold-line"></div>
+
+                <p class="address-tagline">
+                    Where every meal becomes a golden memory.
+                </p>
+
+                <div class="address-location">
+
+                    <span class="location-label">
+                        LOCATION
+                    </span>
+
+                    <p>
+                        25 Golden Avenue,<br>
+                        City Centre,<br>
+                        Jamshedpur, Jharkhand, India
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGE — PHOTO BAAD MEIN LAGA DENA -->
+
+            <div class="address-image">
+
+                <img
+                    src="image/address.jpeg"
+                    alt="The Golden Spoon"
+                >
+
+                <div class="image-caption">
+                    <span>GOLDEN SPOON</span>
+                    <small>EST. 2026</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM BRAND LINE -->
+
+        <div class="address-footer">
+
+            <span>✦</span>
+
+            <p>
+                Crafted for memorable moments
+            </p>
+
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="lunch.js"></script>
+<script src="about.js"></script>
+<script src="reservation.js"></script>
+<!-- =====================================================
+     TAKEOUT SYSTEM 1.7
+     CSS + JS FILE LINKING
+===================================================== -->
+
+
+
+<script src="takeout.js"></script>
+
+<script src="address.js"></script>
+</body>

@@ -1,70 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const about = document.getElementById("about");
+    const image = about.querySelector(".about-image");
+    const aboutText = about.querySelector(".about-text");
 
-    const observer = new IntersectionObserver(function(entries) {
-
-        entries.forEach(function(entry) {
-
-            const image = document.querySelector(".about-image");
-            const heading = document.querySelector(".about-text h1");
-            const paragraphs = document.querySelectorAll(".about-text p");
-
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-
-                // Reset animation
                 image.style.animation = "none";
-                heading.style.animation = "none";
-
-                paragraphs.forEach(function(p) {
-                    p.style.animation = "none";
-                });
-
-                // Force browser reflow
                 void image.offsetWidth;
-                void heading.offsetWidth;
-
-                // Start animation again
                 image.style.animation = "imageReveal 1s ease forwards";
 
-                heading.style.animation =
-"handwriting 2.5s cubic-bezier(0.4,0,0.2,1) forwards";
-
-                paragraphs.forEach(function(p, index) {
-
-                    void p.offsetWidth;
-
-                    p.style.animation = "paraReveal 1s ease forwards";
-                    p.style.animationDelay = (0.2 + index * 0.3) + "s";
-
-                });
-
+                aboutText.classList.add("about-text-visible");
             } else {
-
-                // Reset to initial state when section leaves viewport
                 image.style.animation = "none";
                 image.style.opacity = "0";
                 image.style.transform = "translateX(-120px)";
                 image.style.filter = "blur(12px)";
 
-                heading.style.animation = "none";
-                heading.style.opacity = "0";
-                heading.style.width = "0";
-
-                paragraphs.forEach(function(p) {
-                    p.style.animation = "none";
-                    p.style.opacity = "0";
-                    p.style.transform = "translateY(25px)";
-                });
-
+                aboutText.classList.remove("about-text-visible");
             }
-
         });
-
     }, {
         threshold: 0.3
     });
 
     observer.observe(about);
-
 });
