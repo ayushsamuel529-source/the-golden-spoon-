@@ -1,5 +1,6 @@
 // ==================================================
-// THE GOLDEN SPOON — LOADER
+// THE GOLDEN SPOON
+// LOADER + FIRST HERO IMAGE SYNC
 // ==================================================
 
 (function () {
@@ -7,16 +8,22 @@
     const loader =
         document.getElementById("site-loader");
 
+    const firstHeroImage =
+        document.querySelector(
+            ".slide.active picture img"
+        );
+
     if (!loader) return;
 
 
-    // Minimum luxury-loader display time
+    // ==================================================
+    // SETTINGS
+    // ==================================================
+
     const MINIMUM_TIME = 1800;
 
-    // Safety: forever stuck nahi hoga
-    const MAXIMUM_TIME = 5000;
+    const MAXIMUM_TIME = 7000;
 
-    // CSS fade duration
     const FADE_TIME = 800;
 
 
@@ -27,13 +34,20 @@
         false;
 
 
-    // Loader ke waqt scrolling off
+    // ==================================================
+    // LOCK PAGE
+    // ==================================================
+
     document.documentElement.style.overflow =
         "hidden";
 
     document.body.style.overflow =
         "hidden";
 
+
+    // ==================================================
+    // FINISH LOADER
+    // ==================================================
 
     function finishLoader() {
 
@@ -58,13 +72,13 @@
             finished = true;
 
 
-            // Smooth fade
+            // Loader fade
             loader.classList.add(
                 "loader-hidden"
             );
 
 
-            // Page scroll restore
+            // Scroll restore
             document.documentElement.style.overflow =
                 "";
 
@@ -72,7 +86,7 @@
                 "";
 
 
-            // Fade complete → remove loader
+            // Fade complete
             setTimeout(function () {
 
                 if (loader.parentNode) {
@@ -91,25 +105,57 @@
     }
 
 
-    // Actual page assets loaded
-    if (
-        document.readyState === "complete"
-    ) {
+    // ==================================================
+    // WAIT FOR FIRST HOMEPAGE IMAGE
+    // ==================================================
 
-        finishLoader();
+    if (firstHeroImage) {
+
+        /*
+           Image cached/already loaded
+        */
+        if (
+            firstHeroImage.complete &&
+            firstHeroImage.naturalWidth > 0
+        ) {
+
+            finishLoader();
+
+        } else {
+
+            /*
+               First hero image actually loaded
+            */
+            firstHeroImage.addEventListener(
+                "load",
+                finishLoader,
+                { once: true }
+            );
+
+
+            /*
+               Broken image ho toh loader
+               forever stuck nahi hoga
+            */
+            firstHeroImage.addEventListener(
+                "error",
+                finishLoader,
+                { once: true }
+            );
+
+        }
 
     } else {
 
-        window.addEventListener(
-            "load",
-            finishLoader,
-            { once: true }
-        );
+        finishLoader();
 
     }
 
 
-    // Safety timeout
+    // ==================================================
+    // SAFETY TIMEOUT
+    // ==================================================
+
     setTimeout(
         finishLoader,
         MAXIMUM_TIME
