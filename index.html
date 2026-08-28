@@ -3,365 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE GOLDEN SPOON
-</title>
-<style>
-  html{
-    scroll-behavior:smooth;
-    scroll-padding-top:80px;
-}
-  html, body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    overflow-x:hidden;
-}
-
-.slider{
-    width:100%;
-    height:100vh;
-    position:relative;
-}
-
-.slide{
-    width:100%;
-    height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-}
-
-.slide img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    display:block;
-}
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-}
-
-/* TOP BUTTONS */
-.top-buttons {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 12px;
-  z-index: 2000;
-}
-/* TAKEOUT - Sirf Golden Border */
-.takeout {
-  padding: 8px 18px;
-  border: 1px solid #C9A14A;
-  color: #C9A14A;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.takeout:hover {
-  background: #C9A14A;
-  color: #000;
-}
-
-/* RESERVATION - Golden Box */
-.reservation {
-  padding: 8px 18px;
-  border: 1px solid #C9A14A;
-  color: #000;
-  background: #C9A14A;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.reservation:hover {
-  background: #A67C2E;
-  border-color: #A67C2E;
-  color: #000;
-}
-.reservation:hover { background: #A67C2E; }
-
-.takeout:hover {
-  background: #C9A14A;
-  color: #000;
-}
-
-/* MENU ICON (DYNAMIC COLOR) */
-.menu-icon {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 32px;
-  cursor: pointer;
-  color: white;
-  z-index: 2000;
-  transition: 0.3s;
-}
-
-/* SIDEBAR */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  background: rgba(0,0,0,0.95);
-  color: white;
-  transition: 0.4s;
-  z-index: 1500;
-  padding-top: 60px;
-}
-
-.sidebar.active { left: 0; }
-
-/* ❌ CLOSE BUTTON */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.sidebar a {
-  display: block;
-  padding: 15px 20px;
-  color: white;
-  text-decoration: none;
-}
-.sidebar a:hover { background: #333; }
+<title>THE GOLDEN SPOON</title>
 
 
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: 1s;
-}
-.slide img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    object-position:center;
-    background:#000;
-}
-.slide.active { opacity: 1; }
-
-/* ARROWS */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  font-size: 30px;
-  border: 1px solid white;
-  padding: 10px 15px;
-  cursor: pointer;
-  background: transparent;
-  z-index: 1000;
-}
-.left { left: 20px; }
-.right { right: 20px; }
-
-/* ANIMATIONS */
-.fade { animation: fade 1s; }
-@keyframes fade { from{opacity:0;} to{opacity:1;} }
-
-.slide-left { animation: slideLeft 1s; }
-@keyframes slideLeft { from{transform:translateX(100%);} to{transform:translateX(0);} }
-
-.slide-right { animation: slideRight 1s; }
-@keyframes slideRight { from{transform:translateX(-100%);} to{transform:translateX(0);} }
-
-.zoom { animation: zoom 1s; }
-@keyframes zoom { from{transform:scale(1.2);} to{transform:scale(1);} }
-
-.rotate { animation: rotate 1s; }
-@keyframes rotate { from{transform:rotate(-8deg);} to{transform:rotate(0);} }
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
-
-/* =========================================
-   MOBILE + TABLET IMAGE FIT
-   FULL IMAGE — NO CROP
-========================================= */
-
-@media (max-width: 1024px) {
-
-    .slider {
-        width: 100%;
-        height: calc(100vw * 1.7778);
-        position: relative;
-        overflow: hidden;
-        background: #000;
-    }
-
-    .slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        display: block;
-        background: #000;
-    }
-
-    /* MENU */
-    .menu-icon {
-        top: 15px;
-        left: 15px;
-        font-size: 28px;
-        z-index: 2000;
-    }
-
-    /* ARROWS */
-    .arrow {
-        font-size: 22px;
-        padding: 8px 12px;
-        z-index: 1000;
-    }
-
-    .left {
-        left: 10px;
-    }
-
-    .right {
-        right: 10px;
-    }
-
-    /* TOP BUTTONS */
-    .top-buttons {
-        top: 10px;
-        right: 10px;
-        gap: 8px;
-    }
-
-    .takeout,
-    .reservation {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-}
-.top-buttons a,
-.top-buttons a:link,
-.top-buttons a:visited,
-.top-buttons a:hover,
-.top-buttons a:active {
-    text-decoration: none !important;
-}
-
-</style>
+  <!-- External CSS -->
+<link rel="stylesheet" href="home.css">
 <link rel="stylesheet" href="about.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="khanna.css">
 <link rel="stylesheet" href="reservation.css">
 <link rel="stylesheet" href="takeout.css">
-
 <link rel="stylesheet" href="address.css">
+
+
 </head>
-
 <body>
+  <!-- TOP BUTTONS -->
+  <div class="top-buttons">
+    <a href="#takeout" class="takeout">Takeout</a>
+    <a href="#reservation" class="reservation">Reservation</a>
+  </div>
 
-<div class="top-buttons">
+  <!-- MENU -->
+  <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
 
-    <a href="#takeout" class="takeout">
-        Takeout
-    </a>
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="close-btn" onclick="toggleMenu()">✕</div>
+    <a href="index.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#reservation">Reservation</a>
+    <a href="#takeout">Takeout</a>
+    <a href="#address">Address</a>
+  </div>
 
-    <a href="#reservation" class="reservation">
-        Reservation
-    </a>
+  <!-- SLIDER START -->
+  <div class="slider">
 
-</div>
-<!-- MENU -->
-<div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
+    <!-- Slide 1 (fade) -->
+    <div class="slide active" data-anim="fade">
+      <picture>
+        <source media="(max-width: 768px)" srcset="image/image1-mobile.png">
+        <img src="image/image1.jpg" alt="Slide 1">
+      </picture>
+    </div>
 
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <div class="close-btn" onclick="toggleMenu()">✕</div>
+    <!-- Slide 2 (slide-left) -->
+    <div class="slide" data-anim="slide-left">
+      <picture>
+        <source media="(max-width: 768px)" srcset="image/image2-mobile.png">
+        <img src="image/image2.jpg" alt="Slide 2">
+      </picture>
+    </div>
 
-  <a href="index.html">Home</a>
-  <a href="#about">about</a>
-  <a href="#menu">Menu</a>
-  <a href="#reservation">Reservation</a>
-   <a href="#takeout">Takeout</a>
-  <a href="#address">Address</a>
- 
-</div>
+    <!-- Slide 3 (zoom) -->
+    <div class="slide" data-anim="zoom">
+      <picture>
+        <source media="(max-width: 768px)" srcset="image/image3-mobile.png">
+        <img src="image/image3.jpg" alt="Slide 3">
+      </picture>
+    </div>
 
-<!-- SLIDER -->
-<div class="slider">
+    <!-- Slide 4 (rotate) -->
+    <div class="slide" data-anim="rotate">
+      <picture>
+        <source media="(max-width: 768px)" srcset="image/image4-mobile.png">
+        <img src="image/image4.jpg" alt="Slide 4">
+      </picture>
+    </div>
 
-  <div class="slide active"><img src="image/image1.jpg"></div>
-  <div class="slide"><img src="image/image2.jpg"></div>
-  <div class="slide"><img src="image/image3.jpg"></div>
-  <div class="slide"><img src="image/image4.jpg"></div>
-  <div class="arrow left" onclick="prevSlide()">❮</div>
-  <div class="arrow right" onclick="nextSlide()">❯</div>
+    <div class="arrow left" onclick="prevSlide()">❮</div>
+    <div class="arrow right" onclick="nextSlide()">❯</div>
+  </div>
+  <!-- SLIDER END -->
 
-</div>
 
-<script>
-let slides = document.querySelectorAll('.slide');
-let index = 0;
-let animations = ['fade','slide-left','slide-right','zoom','rotate'];
 
-/* 🔥 MENU ICON COLOR BASED ON IMAGE */
-let menuIcon = document.getElementById("menuIcon");
-
-function changeMenuColor(i){
-  if(i % 2 === 0){
-    menuIcon.style.color = "white";
-  } else {
-    menuIcon.style.color = "#C9A14A"; // gold
-  }
-}
-
-function showSlide(i){
-  slides.forEach(s=>{
-    s.classList.remove('active');
-    s.classList.remove(...animations);
-  });
-
-  slides[i].classList.add('active');
-  slides[i].classList.add(animations[i % animations.length]);
-
-  changeMenuColor(i); // 🔥 color change
-}
-
-function nextSlide(){
-  index = (index+1)%slides.length;
-  showSlide(index);
-}
-
-function prevSlide(){
-  index = (index-1+slides.length)%slides.length;
-  showSlide(index);
-}
-
-setInterval(nextSlide,5000);
-
-function toggleMenu(){
-  document.getElementById('sidebar').classList.toggle('active');
-}
-</script>
 <div id="about" class="about-section">
 
     <div class="about-image">
@@ -1757,6 +1474,7 @@ class="reserve-btn">
 
 </section>
 
+<script src="home.js"></script>
 <script src="lunch.js"></script>
 <script src="about.js"></script>
 <script src="reservation.js"></script>
