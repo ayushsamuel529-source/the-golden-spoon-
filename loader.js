@@ -1,54 +1,119 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const loader = document.getElementById("global-loader");
-  if (!loader) return;
+// ==================================================
+// THE GOLDEN SPOON — LOADER
+// ==================================================
 
-  const show = () => {
-    loader.classList.remove("loader-hidden");
-  };
+(function () {
 
-  const hide = () => {
-    loader.classList.add("loader-hidden");
-  };
+    const loader =
+        document.getElementById("site-loader");
 
-  // start hidden
-  hide();
+    if (!loader) return;
 
-  // jab new page open hota hai to hide
-  window.addEventListener("load", hide);
 
-  document.addEventListener(
-    "click",
-    (e) => {
-      const a = e.target.closest("a[href]");
-      if (!a) return;
+    // Minimum luxury-loader display time
+    const MINIMUM_TIME = 1800;
 
-      // open in new tab
-      if (a.target === "_blank") return;
+    // Safety: forever stuck nahi hoga
+    const MAXIMUM_TIME = 5000;
 
-      const href = (a.getAttribute("href") || "").trim();
-      if (!href) return;
+    // CSS fade duration
+    const FADE_TIME = 800;
 
-      // ignore special
-      if (href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) return;
 
-      // Same page anchor (#about, #reservation etc.)
-      if (href.startsWith("#")) {
-        show();
-        setTimeout(hide, 800); // thoda time loader dikhne do
-        return; // default scroll chalta rahega
-      }
+    const startTime =
+        Date.now();
 
-      // Other pages
-      show();
-      sessionStorage.setItem("globalLoaderNextPage", "1");
-      // default navigation allow (preventDefault nahi)
-    },
-    true
-  );
+    let finished =
+        false;
 
-  // If coming from a click on another page:
-  if (sessionStorage.getItem("globalLoaderNextPage") === "1") {
-    show();
-    sessionStorage.removeItem("globalLoaderNextPage");
-  }
-});
+
+    // Loader ke waqt scrolling off
+    document.documentElement.style.overflow =
+        "hidden";
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    function finishLoader() {
+
+        if (finished) return;
+
+
+        const elapsed =
+            Date.now() - startTime;
+
+
+        const remaining =
+            Math.max(
+                0,
+                MINIMUM_TIME - elapsed
+            );
+
+
+        setTimeout(function () {
+
+            if (finished) return;
+
+            finished = true;
+
+
+            // Smooth fade
+            loader.classList.add(
+                "loader-hidden"
+            );
+
+
+            // Page scroll restore
+            document.documentElement.style.overflow =
+                "";
+
+            document.body.style.overflow =
+                "";
+
+
+            // Fade complete → remove loader
+            setTimeout(function () {
+
+                if (loader.parentNode) {
+
+                    loader.parentNode.removeChild(
+                        loader
+                    );
+
+                }
+
+            }, FADE_TIME);
+
+
+        }, remaining);
+
+    }
+
+
+    // Actual page assets loaded
+    if (
+        document.readyState === "complete"
+    ) {
+
+        finishLoader();
+
+    } else {
+
+        window.addEventListener(
+            "load",
+            finishLoader,
+            { once: true }
+        );
+
+    }
+
+
+    // Safety timeout
+    setTimeout(
+        finishLoader,
+        MAXIMUM_TIME
+    );
+
+
+})();

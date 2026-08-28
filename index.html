@@ -16,21 +16,46 @@
 <link rel="stylesheet" href="address.css">
 
 </head>
-<head>
-  ...
-  <link rel="stylesheet" href="loader.css">
-</head>
+
 
 <body>
+<!-- =====================================
+     SKYLINE HEAVEN - LOADING SCREEN
+===================================== -->
+<div id="site-loader" class="site-loader">
 
-  <div id="global-loader" class="loader-hidden">
-    <div class="loader-box">
-      <img src="loader.png" class="loader-side-img" alt="Loading">
-      <div class="spinner"></div>
-      <div class="loader-text">Loading...</div>
+    <div class="loader-content">
+
+        <!-- Small Skyline Picture -->
+        <div class="loader-image-wrap">
+            <img
+                src="loader.png"
+                alt="The golden spoon "
+                class="loader-image"
+            >
+        </div>
+
+        <!-- Hotel Name -->
+        <div class="loader-brand">
+            <h1>GOLDEN</h1>
+            <h2>SPOON RESTUARANT </h2>
+
+            <p>A HOUSE OF SERENITY</p>
+        </div>
+
+        <!-- Loading Line -->
+        <div class="loader-line">
+            <span class="loader-line-fill"></span>
+        </div>
+
+        <!-- Loading Text -->
+        <span class="loader-status">
+            LOADING
+        </span>
+
     </div>
-  </div>
 
+</div>
 
   <!-- phir tumhara baaki content -->
   <!-- TOP BUTTONS -->
@@ -45,7 +70,7 @@
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-    <a href="index.html">Home</a>
+    <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#menu">Menu</a>
     <a href="#reservation">Reservation</a>
@@ -54,7 +79,7 @@
   </div>
 
   <!-- SLIDER START -->
-  <div class="slider">
+ <div class="slider" id="home">
 
     <!-- Slide 1 (fade) -->
     <div class="slide active" data-anim="fade">
