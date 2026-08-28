@@ -1,0 +1,57 @@
+#global-loader{
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:999999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:1;
+  transition: opacity .25s ease;
+}
+
+#global-loader.loader-hidden{
+  display:none;
+}
+#global-loader.fading{
+  opacity:0;
+}
+
+.loader-box{
+  display:flex;
+  align-items:center;
+  gap:14px;              /* side img aur spinner gap */
+  background: rgba(0,0,0,0.75);
+  padding:18px 22px;
+  border-radius:14px;
+}
+
+.loader-side-img{
+  width:56px;           /* adjust */
+  height:56px;          /* adjust */
+  border-radius:12px;
+  object-fit:cover;
+}
+
+.spinner{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,0.25);
+  border-top-color:#C9A14A;
+  animation: spin 0.9s linear infinite;
+}
+
+.loader-text{
+  color:#fff;
+  font-size:14px;
+  letter-spacing:.5px;
+}
+
+@keyframes spin{
+  to { transform: rotate(360deg); }
+}
+#global-loader{
+  pointer-events: none;
+}

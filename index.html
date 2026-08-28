@@ -7,6 +7,7 @@
 
 
   <!-- External CSS -->
+<link rel="stylesheet" href="loader.css">
 <link rel="stylesheet" href="home.css">
 <link rel="stylesheet" href="about.css">
 <link rel="stylesheet" href="khanna.css">
@@ -14,9 +15,24 @@
 <link rel="stylesheet" href="takeout.css">
 <link rel="stylesheet" href="address.css">
 
-
 </head>
+<head>
+  ...
+  <link rel="stylesheet" href="loader.css">
+</head>
+
 <body>
+
+  <div id="global-loader" class="loader-hidden">
+    <div class="loader-box">
+      <img src="loader.png" class="loader-side-img" alt="Loading">
+      <div class="spinner"></div>
+      <div class="loader-text">Loading...</div>
+    </div>
+  </div>
+
+
+  <!-- phir tumhara baaki content -->
   <!-- TOP BUTTONS -->
   <div class="top-buttons">
     <a href="#takeout" class="takeout">Takeout</a>
@@ -1474,6 +1490,7 @@ class="reserve-btn">
 
 </section>
 
+<script src="loader.js"></script>
 <script src="home.js"></script>
 <script src="lunch.js"></script>
 <script src="about.js"></script>
